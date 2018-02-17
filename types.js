@@ -594,6 +594,18 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         };
         win.TObjectProperty.__TypeID = "TObjectProperty";
 
+        win.TGuard = function (type, guard) {
+            
+            var TGuardChecker = function (value) {
+                
+                return types.check(value,type,false) && guard(value);
+            };
+            TGuardChecker.__TypeID = type.__TypeID ? 
+                "TGuard(" + type.__TypeID + ")" : "TGuard(<CustomType>)";
+            
+            return TGuardChecker;
+        };
+        win.TGuard.__TypeID = "TGuard";
 
 
     //END REGION: Global Type Annotation Proxy Functions ------------------------------------------------
