@@ -95,6 +95,9 @@ var thing1 = {
   count : 4
 };
 
+//Passes
+types.check(thing1,TYourThing,true);
+
 //fails because count is less than 10
 types.check(thing1,TYourGuardedThing,true);
 ```
