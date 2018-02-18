@@ -89,7 +89,7 @@ TypesJS add several functions to the global namespace. These function ast as typ
 ## Base Types
 [Back to Types](#types)
 
-TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. There are 10 base type annotation functions. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types.
+There are 10 base type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
 
 | Type | Description |
 |---|---|
@@ -104,9 +104,27 @@ TypesJS add several functions to the global namespace. These functions act as ty
 |**TFunction**| any valid JavaScript function |
 |**TSymbol**| any vaild JavaScript symbol |
 
+**_Simple Example_**
+```javascript
+
+  var a = "hello world";
+  
+  //Passes
+  types.check(a,TString,true);
+
+  //Fails
+  types.check(a,TString,true);
+
+```
+
+&nbsp; 
+
+&nbsp;
 
 ## Advanced Types
 [Back to Types](#types)
+
+There are four advanced annotation function in TypesJS. These functions allow you to create more advanced types. These advanced options can be used with the base types provided by TypesJS as well as custom types you defined. See Custom Types section for details on creating your own types. 
 
 | Type | Description |
 |---|---|
