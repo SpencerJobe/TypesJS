@@ -104,7 +104,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             
             stringType = Object.prototype.toString.call(value);
             stringType = stringType.split(" ")[1];
-            return stringType.substring(0,type.length-1).toLowerCase();
+            return stringType.substring(0,stringType.length-1).toLowerCase();
         };
     
 
