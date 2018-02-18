@@ -16,26 +16,20 @@ There are simple Base Types that can be used by themselves or combined to make m
 
 ```javascript
 
-var TYourThing = {
+var test = "Hello world";
+
+types.check(test,TString,true); // Passes
+
+var TMessage = {
   message : TString,
   count : TNumber
 };
 
-var thing1 = {
-  message : "This is the message",
-  count : 45
-};
+var msg1 = { message : "hello world", count : 4 };
+var msg2 = { message : "hello again", count : "4" };
 
-var thing2 = {
-  message : "this is a message",
-  count : "45" //<-- not a number
-};
-
-//passes
-types.check(thing1,TYourThing,true);
-
-//fails
-types.check(thing2,TYourThing,true);
+types.check(msg1,TMessage,true); // Passes
+types.check(msg2,TMessage,true); // Fails 
 
 ```
 ## Base Types
