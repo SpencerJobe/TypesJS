@@ -384,6 +384,7 @@ Returns **true** if `<value>` is a JavaScript Number
 <!-- ===================================================================== -->
 #
 ### `types.isString( <value> )`
+[Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -410,6 +411,7 @@ Returns **true** if `<value>` is a JavaScript String
 <!-- ===================================================================== -->
 #
 ### `types.isObject( <value> )`
+[Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -433,6 +435,7 @@ Returns **true** if `<value>` is a JavaScript Object
 <!-- ===================================================================== -->
 #
 ### `types.isArray( <value> )`
+[Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -456,6 +459,7 @@ Returns **true** if `<value>` is a JavaScript Array
 <!-- ===================================================================== -->
 #
 ### `types.isFunction( <value> )`
+[Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -479,6 +483,7 @@ Returns **true** if `<value>` is a  JavaScript Function
 <!-- ===================================================================== -->
 #
 ### `types.isObjectProperty( <object>, <propertyName>)`
+[Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -503,6 +508,8 @@ Returns **true** if `<propertyName>` is a property on the object literal `<objec
 <!-- ===================================================================== -->
 #
 ### `types.isPrototypeProperty( <object> , <propertyName> )`
+[Back to Function List](#typesjs-functions)
+
 | Parameter | Type |  Description |
 |---|---|---|
 |`<object>`| _object_ | The object you're checking. |
