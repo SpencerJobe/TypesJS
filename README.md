@@ -54,8 +54,8 @@ TypesJS add several functions to the global namespace. These functions act as ty
 ## TypesJS Functions
 TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
-
-**types.check( _value_ , _type_, [hardFail] )** : Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type
+#### `types.check( <value> , <type>, [hardFail] )`
+Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type.
 ```javascript
 var test = "hello world";
 
@@ -63,11 +63,12 @@ types.check(test,TString,true); //Passes, test is a string
 
 types.check(test,TNumber,true); //Fails, test is not a number
 ```
+#
 
+#### `types.checkArgs( <arguments> , <type> , [hardFail] )` 
+Returns true if the provided arguments match the provide type. If the optional `[hardFail]` is set to true, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
 
-**types.checkArgs( arguments , _type_ , [hardFail] )** : Returns true if the provided arguments match the provide type. If the optional hardFail is set to true, then checkArgs will throw an error if the arguments don't match the type. This function is designed for use inside a function to check the values passed to it. The `arguments` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
-
-Furthermore, the `type` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
+Furthermore, the `<type>` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
 ```javascript
 
   var IAdd = {
