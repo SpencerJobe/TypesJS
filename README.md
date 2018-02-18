@@ -32,47 +32,10 @@ types.check(msg1,TMessage,true); // Passes
 types.check(msg2,TMessage,true); // Fails 
 
 ```
-## TypesJS Functions
-TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
-
-
-**`types.isNull(`** _`value`_ **`)`** : Returns true if value is null or undefined
-
-``` types.isNotNull( value ) ```
-Returns true if value is Not null or undefined
-
-``` types.isAny( value ) ``` 
-Always returns true.
-
-``` types.isBoolean( value ) ``` 
-Returns true if value is JavaScript Boolean
-
-``` types.isNumber( value ) ```
-Returns true if value is JavaScript Number
-
-``` types.isString( value ) ```
-Returns true if value is JavaScript String
-
-``` types.isObject( value ) ```
-Returns true if value is JavaScript Object
-
-``` types.isArray( value ) ```
-Returns true if value is JavaScript Array
-
-``` types.isFunction( value ) ```
-Returns true if value is JavaScript Function
-
-``` types.isObjectProperty( object, propertyName ) ```
-Returns true if property is attached to the object literal
-
-``` types.isPrototypeProperty( object, propertyName ) ```
-Returns true if property is attached to the object's prototype
-
-`types.check( value, type, [hardFail] )`
-Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type
-
 
 ## Base Types
+TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. Below is a list of the base type annotations. They are used with the types.check and types.checkArgs functions. You can also define your own custom types. See the Custom Types section below for more info. 
+
 | Type | Description |
 |---|---|
 |**TAny**| any JavaScript value including null and undefined|
@@ -84,6 +47,52 @@ Returns true if value matches the provided type. If the optional hardFail is set
 |**TArray**| any valid JavaScript array |
 |**TObject**| any valid JavaScript object |
 |**TFunction**| any valid JavaScript function |
+
+## TypesJS Functions
+TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
+
+
+**types.check( _value_ , _type_, [hardFail] )** : Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type
+```javascript
+var test = "hello world";
+
+types.check(test,TString,true); //Passes, test is a string
+
+types.check(test,TNumber,true); //Fails, test is not a number
+```
+
+
+**types.checkArgs( arguments , _type_ , [hardFail] )** : Returns true if the provided arguments match the provide type. If the optional hardFail is set to true, then checkArgs will throw an eror if the arguments don't match the type. This function is designed for use inside a function the check the values passed to the function. the 'arguments' parameter should always be JavaScript's 'arguments' variable as seen in the example below. 
+
+Furthermore, the `type` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
+```javascript
+
+```
+
+**types.isNull( _value_ )** : Returns true if value is null or undefined
+
+**types.isNotNull( _value_ )** : Returns true if value is Not null or undefined
+
+**types.isAny( _value_ )** : Always returns true. 
+
+**types.isBoolean( _value_ )** : Returns true if value is JavaScript Boolean
+
+**types.isNumber( _value_ )** : Returns true if value is JavaScript Number
+
+**types.isString( _value_ )** : Returns true if value is JavaScript String
+
+**types.isObject( _value_ )** : Returns true if value is JavaScript Object
+
+**types.isArray( _value_ )** : Returns true if value is JavaScript Array
+
+**types.isFunction( _value_ )** : Returns true if value is JavaScript Function
+
+**types.isObjectProperty( _object_ , _propertyName_ )** : Returns true if property is attached to the object literal
+
+**types.isPrototypeProperty( _object_ , _propertyName_ )** : Returns true if property is attached to the object's prototype
+
+
+
 
 ## Advanced Types
 | Type | Description |
