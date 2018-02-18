@@ -79,11 +79,17 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         var errorLog = []; 
         
 
-        // Flips on when the types.check /checkArgs is called, and turns 
-        // off on completion. Flag is used in the base types TNumber, 
-        // TBoolean, ... etc to check if they are being used in a 
-        // definition or are being used as a type-check.
-        var RUNTIME_FLAG_isTesting = false; 
+        // Increments when the types.check /checkArgs is called, and decrements on completion. 
+        // This is used to change functionality of the Advanced Types:
+        // TArray TObjectProperty TPrototypeProperty and TGuard
+        var RUNTIME_COUNTER_Testing = 0; 
+
+
+        // returns true if types are currently being checked, false otherwise
+        var checkInProgress = function () {
+
+            return RUNTIME_COUNTER_Testing > 0;
+        };
 
 
         // base function to return actual base type of javascript variable.
@@ -184,6 +190,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             return true;
         };
 
+
         // tests value of target[name] using the checker (EX: TNumber ... etc);
         var assertType = function(name, target, checker) {
             
@@ -196,8 +203,8 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
 
             val = target[name];
 
-            // if undefined, but shouldn't be
-            if (getType(val) == "undefined") {
+            // if null, but shouldn't be
+            if (types.isNull(val)) {
             
                 if (checker != TNull && checker != TAny) {
             
@@ -206,106 +213,24 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             }
 
             //checker is a function, so we can test it.
-            if (getType(checker) === "function") {
+            if (types.isFunction(checker)) {
 
                 //is checker is PropertyChecker object or prototype?
-                if (checker.__IsPropertyChecker) {
+                if (checker.__IsAdvancedChecker) {
+
                     return checker(target,name);
                 }
                 return checker(target[name]);
             }
 
             //checker is an object literal which needs further resolution
-            if (getType(checker) === "object") {
+            if (types.isObject(checker)) {
             
                 return checkWithObject(name,target,checker);
             }
 
             //Should never reach this point. So throw an error for funzies.
             throw new Error("types.js -[private] assertType(name,target,checker)");
-        };
-
-
-        // creates a type checker with or without a guard based on provided type and func
-        var createChecker = function (TName,func) {
-            
-            var TBaseCheck = types["is" + TName.substring(1)];
-            
-            var checker = function (value) {
-        
-                return TBaseCheck(value);
-            };
-            checker.__TypeID = TName;
-
-            if (types.isFunction(func)) {
-            
-                checker = function ( value ) {
-                    
-                    return TBaseCheck(value) && func(value);
-                };
-                checker.__TypeID = TName + "{Guarded}";
-            }
-            
-            return checker;
-        };
-        
-
-        // creates a wrapper around a type checker to enforce the ownership of the 
-        // property itself, either the object literal or the object's prototype.
-        var createPropertyOwnerChecker = function (TName, baseChecker) {
-
-            var TBaseCheck = types["is" + TName.substring(1)];
-            
-            var checker = function (target,name) {
-        
-                return TBaseCheck(target,name);
-            };
-            checker.__TypeID = TName;
-            
-            if (types.isFunction(baseChecker)) {
-            
-                checker = function (target, name) {
-                    
-                    return TBaseCheck(target,name) && baseChecker(target[name]);
-                };
-                checker.__TypeID = TName + "(" + baseChecker.__TypeID + ")";
-            }
-            
-            checker.__IsPropertyChecker = true;
-            return checker;
-        };
-
-
-        //creates a typed array checker. used in TArray function 
-        var createTypedArrayType = function (elemType) {
-        
-            var TTypedArray = function (arr) {
-
-                if (getType(arr) !== "array") {
-                
-                    return false;
-                }
-        
-                for(var i = 0; i < arr.length; i += 1) {
-                
-                    if ( !elemType(arr[i]) ) {   
-                
-                        return false;
-                    }
-                }
-                return true;
-            };
-            
-            if (types.isFunction(elemType)) {
-            
-                TTypedArray.__TypeID = "TArray(" + elemType.__TypeID + ")";
-            
-            } else if (types.isObject(elemType)) {
-            
-                TTypedArray.__TypeID = "TArray(<CustomType>)";
-            }
-            
-            return TTypedArray;
         };
 
 
@@ -368,6 +293,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
 
 
         types.isFunction = function (value) {
+           // return !types.isString(value) &&  (String(value).indexOf("function") === 0);
 
             return getType(value) === "function";
         };
@@ -405,19 +331,19 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         };
 
 
-        types.check = function (target, type, optHardFail) {
+        types.check = function (target, targetType, optHardFail) {
         
             var checker;
             var valid = true;
             
             optHardFail = types.isNull(optHardFail) ? false : optHardFail;
-            RUNTIME_FLAG_isTesting = true;
+            RUNTIME_COUNTER_Testing += 1;
     
-            for(var name in type) {
+            for(var name in targetType) {
           
-                if (type.hasOwnProperty(name)) {
+                if (targetType.hasOwnProperty(name)) {
           
-                    checker = type[name];
+                    checker = targetType[name];
           
                     if(assertType(name,target,checker) == false) {
                        
@@ -426,7 +352,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
                     }
                 }
             }
-            RUNTIME_FLAG_isTesting = false;
+            RUNTIME_COUNTER_Testing -= 1;
     
             if (optHardFail && valid === false) {
     
@@ -438,15 +364,15 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         };
     
 
-        types.checkArgs = function (targetArgs,type,optHardFail) {
+        types.checkArgs = function (targetArgs,targetType,optHardFail) {
             
             var args = Array.prototype.slice.call(targetArgs);
             var target = {};
             var index = 0;
     
-            for(var name in type) {
+            for(var name in targetType) {
           
-                if (type.hasOwnProperty(name)) {
+                if (targetType.hasOwnProperty(name)) {
                     
                     target[name] = args[index];
                 }
@@ -454,7 +380,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
                 index += 1;
             }
             
-            return types.check(target,type,optHardFail);
+            return types.check(target,targetType,optHardFail);
         };
     
 
@@ -475,90 +401,120 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
     
     //REGION: Global Type Annotation Proxy Functions ----------------------------------------------------
         
-
+        //Base Types
 
         win.TNull = function (value) {
             
-            return RUNTIME_FLAG_isTesting ?
-                types.isBoolean(value) : createChecker("TNull",value);
+            return types.isBoolean(value);
         };
         win.TNull.__TypeID = "TNull";
 
 
         win.TNotNull = function (value) {
 
-            return RUNTIME_FLAG_isTesting ?
-                types.isNotNull(value) :  createChecker("TNotNull",value);
+            return types.isNotNull(value);
         };
         win.TNotNull.__TypeID = "TNotNull";
 
 
         win.TAny = function (value) {
             
-            return RUNTIME_FLAG_isTesting ?
-                types.isAny(value) : createChecker("TAny",value);
+            return types.isAny(value);
         };
         win.TAny.__TypeID = "TAny";
 
 
         win.TBoolean = function (value) {
 
-            return RUNTIME_FLAG_isTesting ?
-                types.isBoolean(value) : createChecker("TBoolean",value);
+            return types.isBoolean(value);
         };
         win.TBoolean.__TypeID = "TBoolean";
 
 
         win.TNumber = function (value) {
             
-            return RUNTIME_FLAG_isTesting ?
-                types.isNumber(value) : createChecker("TNumber",value);
+            return types.isNumber(value);
         };
         win.TNumber.__TypeID = "TNumber";
 
 
         win.TString = function (value) {
 
-            return RUNTIME_FLAG_isTesting ?
-                types.isString(value) : createChecker("TString",value);
+            return types.isString(value);
         };
         win.TString.__TypeID = "TString";
 
 
         win.TObject = function (value) {
             
-            return RUNTIME_FLAG_isTesting ?
-                types.isObject(value) : createChecker("TObject",value);
+            return types.isObject(value);
         };
         win.TObject.__TypeID = "TObject";
 
 
         win.TFunction = function (value) {
 
-            return RUNTIME_FLAG_isTesting ?
-                types.isFunction(value) : createChecker("TFunction",value);
+            return types.isFunction(value);
         };
         win.TFunction.__TypeID = "TFunction";
 
 
-        win.TArray = function (value) {
 
-            return RUNTIME_FLAG_isTesting ?
-                types.isArray(value) : createTypedArrayType(value);
-        }
-        win.TArray.__TypeID = "TArray(TAny)";
+        //Advanced Types
 
 
-        win.TUnion = function () {
-            if (RUNTIME_FLAG_isTesting) {
-                throw new Error("TUnion types must be defined with member types. Ex: TUnion(TString,TNumber)  but Not TUnion");
+        win.TArray = function (elemType) {
+
+            if (checkInProgress()) {
+
+                throw new Error("TArray types must be defined with an element type. " +
+                                "Ex: TArray(TString). Use TArray(TAny) for a general array type.");
+            }
+
+            var TTypedArray = function (arr) {
+
+                if (!types.isArray(arr)) {
+                
+                    return false;
+                }
+        
+                for(var i = 0; i < arr.length; i += 1) {
+                
+                    if ( !elemType(arr[i]) ) {   
+                
+                        return false;
+                    }
+                }
+                return true;
+            };
+            
+            if (types.isFunction(elemType)) {
+            
+                TTypedArray.__TypeID = "TArray(" + elemType.__TypeID + ")";
+            
+            } else if (types.isObject(elemType)) {
+            
+                TTypedArray.__TypeID = "TArray(<CustomType>)";
+            }
+            
+            return TTypedArray;
+        };
+        
+
+        win.TUnion = function (/*arguments...*/) {
+
+            if (checkInProgress()) {
+            
+                throw new Error("TUnion types must be defined with member" +
+                                "types. Ex: TUnion(TString,TNumber)  but Not TUnion");
             }
             
             var typeList = Array.prototype.slice.call(arguments);
             var typeId = "";
+            var TUnionChecker = function (val) {
 
-            var TypedUnion = function (val) {
                 for(var i = 0; i < typeList.length; i += 1) {
+                
                     if (typeList[i](val)) {
                         return true;
                     }
@@ -567,45 +523,97 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             };
 
             for (var i = 0; i < typeList.length; i += 1) {
+
                 typeId += "," + (typeList[i].__TypeID || "<CustomType>");
             }
 
             typeId = typeId.substring(1);
-            TypedUnion.__TypeID = "TUnion(" + typeId + ")";
+            TUnionChecker.__TypeID = "TUnion(" + typeId + ")";
             
-            return TypedUnion;
+            return TUnionChecker;
         };
 
 
-        win.TPrototypeProperty = function (target,name) {
+        win.TPrototypeProperty = function (propType) {
 
-            return RUNTIME_FLAG_isTesting ? 
-                types.isPrototypeProperty(target,name) :
-                createPropertyOwnerChecker("TPrototypeProperty",target);
-        };
-        win.TPrototypeProperty.__TypeID = "TPrototypeProperty";
-
-
-        win.TObjectProperty = function (target,name) {
-
-            return RUNTIME_FLAG_isTesting ?
-                types.isObjectProperty(target,name) :
-                createPropertyOwnerChecker("TObjectProperty",target);
-        };
-        win.TObjectProperty.__TypeID = "TObjectProperty";
-
-        win.TGuard = function (type, guard) {
-            
-            var TGuardChecker = function (value) {
+            if (checkInProgress()) {
                 
-                return types.check(value,type,false) && guard(value);
-            };
-            TGuardChecker.__TypeID = type.__TypeID ? 
-                "TGuard(" + type.__TypeID + ")" : "TGuard(<CustomType>)";
+                throw new Error("TPrototypeProperty must be used with a corresponding " +
+                               "Type to check. Ex: TPrototypeProperty(TString) but " +
+                               "NOT TPrototypeProperty. Use TPrototypeProperty(TAny) " + 
+                               "for general use case.");
             
+            } else if (!types.isObject(propType) && !types.isFunction(propType)) {
+
+                throw new Error("TPrototypeProperty(propType:function|object) ERROR -> propType must be a function or an object.");
+            }
+            
+            var TPropChecker = function (target,name) {
+                    
+                return types.isPrototypeProperty(target,name) && assertType(name,target,propType);
+            };
+            TPropChecker.__TypeID = "TPrototypeProperty(" + (propType.__TypeID || "<CustomType>") + ")";
+            TPropChecker.__IsAdvancedChecker = true;
+
+            return TPropChecker;
+        };
+        
+
+        win.TObjectProperty = function (propType) {
+
+            if (checkInProgress()) {
+                
+                throw new Error("TObjectProperty must be used with a corresponding " +
+                               "Type to check. Ex: TObjectProperty(TString) but " +
+                               "NOT TObjectProperty. Use TObjectProperty(TAny) " + 
+                               "for general use case.");
+
+            }  else if (!types.isObject(propType) && !types.isFunction(propType)) {
+
+                throw new Error("TObjectProperty(propType:function|object) ERROR -> propType must be a function or an object.");
+            }
+            
+            var TPropChecker = function (target,name) {
+                    
+                return types.isObjectProperty(target,name) && assertType(name,target,propType);
+            };
+            TPropChecker.__TypeID = "TObjectProperty(" + (propType.__TypeID || "<CustomType>") + ")";
+            TPropChecker.__IsAdvancedChecker = true;
+
+            return TPropChecker;
+        };
+
+
+        win.TGuard = function (rootType, guard) {
+        
+            if (checkInProgress()) {
+                
+                throw new Error("TGuard must be used with a corresponding Type to check and a " +
+                               "guard function. Ex: TGuard(TNumber,function(v) { return v > 0; }) but " +
+                               "NOT TGuard. Use TGuard(TAny,function(v){...}) for general use case. ");
+            }
+
+            if (!types.isObject(rootType) && !types.isFunction(rootType)) {
+
+                throw new Error("TGuard(rootType:function|object, guard:function) ERROR -> rootType must be a function or an object.");
+            }
+
+            if (!types.isFunction(guard)) {
+
+                throw new Error("TGuard(rootType:function|object, guard:function) ERROR -> guard must be a function.");
+            }
+
+            var TGuardChecker = function (target,name) {
+                
+                return assertType(name,target,rootType) && guard(target[name]);
+            };
+            TGuardChecker.__TypeID = "TGuard(" + (rootType.__TypeID || "<CustomType>") + ", " + String(guard) + ")";
+            TGuardChecker.__IsAdvancedChecker = true;
+
             return TGuardChecker;
         };
-        win.TGuard.__TypeID = "TGuard";
+        
+
 
 
     //END REGION: Global Type Annotation Proxy Functions ------------------------------------------------
