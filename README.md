@@ -100,6 +100,7 @@ TypesJS add several functions to the global namespace. These functions act as ty
 |**TArray**| any valid JavaScript array |
 |**TObject**| any valid JavaScript object |
 |**TFunction**| any valid JavaScript function |
+|**TSymbol**| any vaild JavaScript symbol |
 
 ---
 
@@ -122,6 +123,10 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 - [`types.isString(<value>)`](#typesisstring-value-)
 - [`types.isArray(<value>)`](#typesisarray-value-)
 - [`types.isObject(<value>)`](#typesisobject-value-)
+- [`types.isFunction(<value>)`](#typesisfunction-value-)
+- [`types.isSymbol(<value>)`](#typesissymbol-value-)
+- [`types.isObjectProperty( <object>, <propertyName>)`](#typesisobjectproperty-object-propertyname-)
+- [`types.isPrototypeProperty( <object>, <propertyName>)`](#typesisprototypeproperty-object-propertyname-)
 
 &nbsp;
 
@@ -436,23 +441,27 @@ Returns **true** if `<value>` is a JavaScript Object
 
 ```javascript
 
+  const MySymbol = Symbol("test");
+  
   var a = { x:3, y:4 };
   var b = { };
   var c = Object.create(null);
   var d = [1,2,3];
+  var fn = function (a,b) {
+    return a + b;
+  };
   
   types.isObject(a); // true
-  
   types.isObject(b); // true
-  
   types.isObject(c); // true
-
   types.isObject(d); // false
+  types.isObject(fn); // false
   
-  types.isObject(window); // true
-  
+  types.isObject(window); // true 
   types.isObject(document.body); // true
 
+  types.isObject(MySymbol); // false
+  
 ```
 
 &nbsp;
@@ -507,7 +516,41 @@ Returns **true** if `<value>` is a  JavaScript Function
 
 &nbsp;
 
+<!-- ===================================================================== -->
+#
+### `types.isSymbol( <value> )`
+[Back to Function List](#typesjs-functions)
 
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a  JavaScript Symbol
+
+**_Examples_**
+
+```javascript
+
+  const a = Symbol();
+  const b = Symbol(42);
+  const c = Symbol("test");
+  const d = "hello world";
+  const e = 43;
+  
+  types.isSymbol(a); // true
+  types.isSymbol(b); // true
+  types.isSymbol(c); // true
+  
+  types.isSymbol(d); // false
+  types.isSymbol(e); // false
+
+```
+
+&nbsp;
+
+&nbsp;
 <!-- ===================================================================== -->
 #
 ### `types.isObjectProperty( <object>, <propertyName>)`
