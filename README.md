@@ -1,3 +1,5 @@
+## `THIS DOCUMENT IS UNDER CONSTRUCTION `
+
 # TypesJS 
 
 TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
