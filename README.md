@@ -33,11 +33,10 @@ types.check(msg2,TMessage,true); // Fails
 
 ```
 ## TypesJS Functions
-TypesJS provides helper functions to check JavaScript's base types. There are also two funchtions designed to help with checking custom types and applying assertions at runtime.
+TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
 
-``` types.isNull( value ) ```
-Returns true if value is null or undefined
+**`types.isNull(`** _`value`_ **`)`** : Returns true if value is null or undefined
 
 ``` types.isNotNull( value ) ```
 Returns true if value is Not null or undefined
