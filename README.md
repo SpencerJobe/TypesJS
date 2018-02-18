@@ -33,10 +33,21 @@ types.check(msg2,TMessage,true); // Fails
 
 ```
 ## Helper Functions
-TypesJS has server helper functions to check JavaScript's base types.
+TypesJS provides helper functions to check JavaScript's base types.
+
 | Function | Description |
 |---|---|
-
+| ``` types.isNull( value ) ``` | Returns true if value is null or undefined |
+| ``` types.isNotNull( value ) ``` |  Returns true if value is Not null or undefined |
+| ``` types.isAny( value ) ``` |  Always returns true.  |
+| ``` types.isBoolean( value ) ``` |  Returns true if value is JavaScript Boolean |
+| ``` types.isNumber( value ) ``` |  Returns true if value is JavaScript Number |
+| ``` types.isString( value ) ``` |  Returns true if value is JavaScript String |
+| ``` types.isObject( value ) ``` |  Returns true if value is JavaScript Object |
+| ``` types.isArray( value ) ``` |  Returns true if value is JavaScript Array |
+| ``` types.isFunction( value ) ``` |  Returns true if value is JavaScript Function |
+| ``` types.isObjectProperty( object, propertyName ) ``` |  Returns true if property is attached to the object literal |
+| ``` types.isPrototypeProperty( object, propertyName ) ``` |  Returns true if property is attached to the object's prototype |
 
 
 ## Base Types
