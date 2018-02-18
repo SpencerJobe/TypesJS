@@ -128,10 +128,10 @@ There are four advanced annotation functions in TypesJS. These functions allow y
 
 | Type | Description |
 |---|---|
-|[**`TUnion(T1,T2,...)`**](#tunion-t1-t2----)| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
-|[**`TObjectProperty(T)`**](#tobjectproperty-t-)| checks that the provided type T is defined only on the object literal |
-|[**`TPrototypeProperty(T)`**](#tprototypeproperty-t-)| checks that the provided type T is defined only on the object's prototype |
-|[**`TGuard(T,fn)`**](#tguard-t-fn-)| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
+|[**`TUnion(T1,T2,...)`**](#tuniont1t2)| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
+|[**`TObjectProperty(T)`**](#tobjectpropertyt)| checks that the provided type T is defined only on the object literal |
+|[**`TPrototypeProperty(T)`**](#tprototypepropertyt)| checks that the provided type T is defined only on the object's prototype |
+|[**`TGuard(T,fn)`**](#tguardtfn)| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
 
 #
 ### `TUnion(T1,T2,...)`
@@ -215,13 +215,13 @@ TObjectProperty is a special advanced-annotation that wraps around a base or cus
 ### `TPrototypeProperty(T)`
 [Back to Advanced Types](#advanced-types)
 
-TObjectProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object literal and is NOT present on the prototype. 
+TPrototypeProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object's prototype and is NOT present on the object itself. 
 ```javascript
   var TPoint = {
     x: TNumber,
     y: TNumber,
-    show: TObjectProperty(TFunction)
-  }
+    show: TPrototypeProperty(TFunction)
+  };
   
   var Point = function (x, y) {
     this.x = x;
@@ -234,11 +234,53 @@ TObjectProperty is a special advanced-annotation that wraps around a base or cus
   
   var p1 = new Point(4,4);
   
-  //Fails because 'show' is located on the object's prototype
+  //passes because 'show' is located on the object's prototype
   types.check(p1,TPoint,true);
+ 
+  var p2 = { 
+    x: 3, 
+    y: 6,
+    show: function () {
+      console.log("foo");
+    }
+  };
+  
+  //Fails because 'show' is located on the object itself
+  types.check(p2,TPoint,true);
+
+```
+
+&nbsp;
+
+&nbsp;
+
+#
+### `TGuard(T,fn)`
+[Back to Advanced Types](#advanced-types)
+
+TGuard is a special advanced-annotation that wraps around a base or custom type. It allows you to assign an assertion function to your type annotation. When a value is tested with a guard, it is first tested against the provide type `T`. If it _is_ of type `T` then the value is passed to the guard function `fn`. If _this_ function returns **true**, the value is considered to be a valid, guarded, type `T`. If the function returns **false**, then the value is considered invalid. 
+
+```javascript
+  var TPoint = {
+    x: TGuard(TNumber, function (x) {
+      return x >= 0;
+    },
+    y: TNumber,
+  };
+
+  var p1 = { x:4, y:4 };
+  var p2 = ( x:-100, y:4 };
+
+  
+  // Passes - p1 matches TPoint, and p1.x >= 0
+  types.check(p1,TPoint,true);
+ 
+  // Fails - although p2 matches TPoint, it fails the guard, p2.x < 0
+  types.check(p2,TPoint,true);
  
 
 ```
+
 ---
 
 &nbsp;
