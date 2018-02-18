@@ -6,13 +6,15 @@
 TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
 
 #### Table of Contents
-- [Overview](README.md#overview)
-- [Types](README.md#types)
-  - [Base Types](README.md#base_types)
+- [Overview](#overview)
+- [Types](#types)
+  - [Base Types](#base_types)
   
   
+---
 
 # Overview
+[Table of Contents](#table_of_contents)
 
 ## Easy to "Install"
 ```html
