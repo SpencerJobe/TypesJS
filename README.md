@@ -80,7 +80,7 @@ types.check(msg2,TMessage,true);
 - [Base Types](#base-types)
 - [Advanced Types](#advanced-types)
 
-TypesJS add several functions to the global namespace. These function ast as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
+TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
 
 &nbsp;
 
@@ -89,7 +89,7 @@ TypesJS add several functions to the global namespace. These function ast as typ
 ## Base Types
 [Back to Types](#types)
 
-There are 10 base type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
+There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
 
 | Type | Description |
 |---|---|
@@ -107,13 +107,13 @@ There are 10 base type annotation functions. They represent the base types in Ja
 **_Simple Example_**
 ```javascript
 
-  var a = "hello world";
-  
-  //Passes
-  types.check(a,TString,true);
+var a = "hello world";
 
-  //Fails
-  types.check(a,TString,true);
+//Passes
+types.check(a,TString,true);
+
+//Fails
+types.check(a,TString,true);
 
 ```
 
@@ -124,7 +124,7 @@ There are 10 base type annotation functions. They represent the base types in Ja
 ## Advanced Types
 [Back to Types](#types)
 
-There are four advanced annotation function in TypesJS. These functions allow you to create more advanced types. These advanced options can be used with the base types provided by TypesJS as well as custom types you defined. See Custom Types section for details on creating your own types. 
+There are four advanced annotation functions in TypesJS. These functions allow you to create more advanced types. These advanced options can be used with the base types provided by TypesJS as well as custom types you defined. Examples of these advanced annotation function are provided below. See Custom Types section for details on creating your own types. 
 
 | Type | Description |
 |---|---|
@@ -132,6 +132,48 @@ There are four advanced annotation function in TypesJS. These functions allow yo
 |**TObjectProperty(T)**| checks that the provided type T is defined only on the object literal |
 |**TPrototypeProperty(T)**| checks that the provided type T is defined only on the object's prototype |
 |**TGuard(T,fn)**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
+
+#
+### TUnion(T1,T2,...)
+The TUnion type allows you to create a union of more than one type. This is helpful when a valid value could be more than one type. A common example is when a value could be either a string or a number. 
+```javascript
+  
+var a = "hello world";
+var b = 42;
+var c = document.createElement("p");
+
+// Passes a is a string and TString is a member of the union type
+types.check(a,TUnion(TString,TNumber), true);
+
+// Passes b is a number and TNumber is a member of the union type
+types.check(b,TUnion(TString,TNumber), true);
+
+// Fails c is an object and TObject is NOT a member of the union type
+types.check(b,TUnion(TString,TNumber), true);
+
+```
+You won't want to type `TUnion(TString,TNumber)` every time you need to check your union type. So, you can store it in a JavaScript variable instead. 
+```javascript
+
+var a = "hello world";
+var b = 42;
+var c = document.createElement("p");
+
+var TStrumber = TUnion(TString,TNumber);
+
+// Passes a is a string and TString is a member of the union type TStrumber
+types.check(a,TUnion(TString,TNumber), true);
+
+// Passes b is a number and TNumber is a member of the union type TStrumber
+types.check(b,TUnion(TString,TNumber), true);
+
+// Fails c is an object and TObject is NOT a member of the union type TStrumber
+types.check(b,TUnion(TString,TNumber), true);
+
+```
+
+
+
 ---
 
 &nbsp;
