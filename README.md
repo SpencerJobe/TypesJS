@@ -121,7 +121,7 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 - [`types.isNumber(<value>)`](#typesisnumber-value-)
 - [`types.isString(<value>)`](#typesisstring-value-)
 - [`types.isArray(<value>)`](#typesisarray-value-)
-- [`types.isObject(<value)`](#typesisobject-value-)
+- [`types.isObject(<value>)`](#typesisobject-value-)
 
 &nbsp;
 
@@ -344,7 +344,7 @@ Returns **true** if `<value>` is JavaScript Boolean.
 
 <!-- ===================================================================== -->
 #
-### `types.isNumber( _value_ )`
+### `types.isNumber( <value> )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
@@ -359,6 +359,22 @@ Returns **true** if `<value>` is a JavaScript Number
 
 ```javascript
 
+  types.isNumber(25); // true
+  types.isNumber(-123); // true
+  
+  types.isNumber("0"); // false
+  types.isNumber("foo"); // false
+  
+  types.isNumber(Infinity); // true
+  types.isNumber("Infinity"); // false
+  types.isNumber(NaN); // false;
+  
+  types.isNumber(null); // false
+  types.isNumber(undefined); // false
+  
+  var a = { x:21, y: 32 };
+  types.isNumber(a); // false;
+
 ```
 
 &nbsp;
@@ -367,7 +383,7 @@ Returns **true** if `<value>` is a JavaScript Number
 
 <!-- ===================================================================== -->
 #
-### `types.isString( _value_ )`
+### `types.isString( <value> )`
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -381,6 +397,9 @@ Returns **true** if `<value>` is a JavaScript String
 
 ```javascript
 
+  var a = "Hello world";
+  var b = 42;
+
 ```
 
 &nbsp;
@@ -390,7 +409,7 @@ Returns **true** if `<value>` is a JavaScript String
 
 <!-- ===================================================================== -->
 #
-### `types.isObject( _value_ )`
+### `types.isObject( <value> )`
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -413,7 +432,7 @@ Returns **true** if `<value>` is a JavaScript Object
 
 <!-- ===================================================================== -->
 #
-### `types.isArray( _value_ )`
+### `types.isArray( <value> )`
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -436,7 +455,7 @@ Returns **true** if `<value>` is a JavaScript Array
 
 <!-- ===================================================================== -->
 #
-### `types.isFunction( _value_ )`
+### `types.isFunction( <value> )`
 
 | Parameter | Type |  Description |
 |---|---|---|
