@@ -129,7 +129,7 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 
 <!-- ===================================================================== -->
 #
-#### `types.check( <value>, <type>, [hardFail] )`
+### `types.check( <value>, <type>, [hardFail] )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
@@ -158,19 +158,19 @@ types.check(test,TNumber,true); //Fails, test is not a number
 
 <!-- ===================================================================== -->
 #
-#### `types.checkArgs( <arguments>, <type>, [hardFail] )`
+### `types.checkArgs( <arguments>, <type>, [hardFail] )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
 |---|---|---|
-|`<value>`| _any_ | The variable or literal value you want to check. |
+|`<arguments>`| JavaScript's **_arguments_** | This must be the **`arguments`** variable.  |
 |`<type>` | _function_\|_object_ | The TypesJS annotation function, or your own custom Type object |
 |`[hardFail]`| _boolean_ | **OPTIONAL** If true, then the function will throw an error if `<value>` does not match `<type>` |
 
 
 **_Information_** 
 
-Returns true if the provided arguments match the provide type. If the optional `[hardFail]` is set to true, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
+Returns **true** if the provided arguments match the provide type. Otherwise it returns **false** If the optional `[hardFail]` is set to **true**, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
 
 Furthermore, the `<type>` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
 
@@ -200,7 +200,7 @@ Furthermore, the `<type>` parameter should be defined as an object literal who's
 
 <!-- ===================================================================== -->
 #
-#### `types.isNull( <value> )`
+### `types.isNull( <value> )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
@@ -235,7 +235,7 @@ Returns **true** if `<value>` is null or undefined. Otherwise it returns **false
 
 <!-- ===================================================================== -->
 #
-#### `types.isNotNull( <value> )`
+### `types.isNotNull( <value> )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
@@ -270,7 +270,7 @@ Returns **true** if `<value>` is **NOT** null or undefined. Otherwise it returns
 
 <!-- ===================================================================== -->
 #
-#### `types.isAny( <value> )`
+### `types.isAny( <value> )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
@@ -305,23 +305,204 @@ Always returns true. [More Info](https://en.wikipedia.org/wiki/Philosophy)
 
 <!-- ===================================================================== -->
 #
-#### `types.isBoolean( <value> )` 
-Returns true if `<value>` is JavaScript Boolean.
+### `types.isBoolean( <value> )`
+[Back to Function List](#typesjs-functions)
 
-**types.isNumber( _value_ )** : Returns true if value is JavaScript Number
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
 
-**types.isString( _value_ )** : Returns true if value is JavaScript String
+**_Information_**
 
-**types.isObject( _value_ )** : Returns true if value is JavaScript Object
+Returns **true** if `<value>` is JavaScript Boolean.
 
-**types.isArray( _value_ )** : Returns true if value is JavaScript Array
+**_Examples_**
+```javascript
 
-**types.isFunction( _value_ )** : Returns true if value is JavaScript Function
+  var a = true;
+  var b = false;
+  var c = 1;
+  var d = "true";
+  
+  // Returns true
+  types.isBoolean(a);
+  
+  // Returns true
+  types.isBoolean(b);
+  
+  // Returns false
+  types.isBoolean(c);
+  
+  // Returns false
+  types.isBoolean(d);
 
-**types.isObjectProperty( _object_ , _propertyName_ )** : Returns true if property is attached to the object literal
+```
 
-**types.isPrototypeProperty( _object_ , _propertyName_ )** : Returns true if property is attached to the object's prototype
+&nbsp;
 
+&nbsp;
+
+<!-- ===================================================================== -->
+#
+### `types.isNumber( _value_ )`
+[Back to Function List](#typesjs-functions)
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a JavaScript Number
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+<!-- ===================================================================== -->
+#
+### `types.isString( _value_ )`
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a JavaScript String
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+<!-- ===================================================================== -->
+#
+### `types.isObject( _value_ )`
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a JavaScript Object
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+<!-- ===================================================================== -->
+#
+### `types.isArray( _value_ )`
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a JavaScript Array
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+<!-- ===================================================================== -->
+#
+### `types.isFunction( _value_ )`
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<value>`| _any_ | The variable or literal value you want to check. |
+
+**_Information_**
+
+Returns **true** if `<value>` is a  JavaScript Function
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+<!-- ===================================================================== -->
+#
+### `types.isObjectProperty( <object>, <propertyName>)`
+
+| Parameter | Type |  Description |
+|---|---|---|
+|`<object>`| _object_ | The object you're checking. |
+|`<propertyName>`| _string_ | The name of the property on the object |
+
+**_Information_**
+
+Returns **true** if `<propertyName>` is a property on the object literal `<object>` and **NOT** present on the `<object>.prototype`.
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+<!-- ===================================================================== -->
+#
+### `types.isPrototypeProperty( <object> , <propertyName> )`
+| Parameter | Type |  Description |
+|---|---|---|
+|`<object>`| _object_ | The object you're checking. |
+|`<propertyName>`| _string_ | The name of the property on the object |
+
+Returns **true** if `<propertyName>` is a property on the `<object>.prototype` and **NOT** present on the object literal `<object>`
+
+**_Examples_**
+
+```javascript
+
+```
+
+&nbsp;
+
+&nbsp;
+
+
+---
 
 ## Custom Types
 -Section under construction-
