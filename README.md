@@ -8,13 +8,13 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 #### Table of Contents
 - [Overview](#overview)
 - [Types](#types)
-  - [Base Types](#base_types)
+  - [Base Types](#base-types)
   
   
 ---
 
 # Overview
-[Table of Contents](#table_of_contents)
+[Back to Table of Contents](#table-of-contents)
 
 ## Easy to "Install"
 ```html
@@ -48,6 +48,10 @@ types.check(msg2,TMessage,true); // Fails
 ```
 ---
 # Types
+[Back to Table of Contents](#table-of-contents)
+-[Base Types](#base-types)
+-[Advanced Types](#advanced-types)
+
 TypesJS add several functions to the global namespace. These function ast as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
 
 
