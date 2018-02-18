@@ -6,7 +6,7 @@ TypesJS is an optional runtime type checking system for JavaScript.
 ```html
 <!DOCTYPE html>
   <head>
-    <script src="types.js"></script>
+    <script src="types.min.js"></script>
   </head>
   ...
 ```
