@@ -93,16 +93,16 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 
 | Type | Description |
 |---|---|
-|**TAny**| any JavaScript value including null and undefined|
-|**TNull**| represents both null and undefined|
-|**TNotNull**| any value that is not null or undefined|
-|**TBoolean**| any boolean value true or false |
-|**TNumber**| any valid JavaScript number |
-|**TString**| any valid JavaScript string |
-|**TArray**| any valid JavaScript array |
-|**TObject**| any valid JavaScript object |
-|**TFunction**| any valid JavaScript function |
-|**TSymbol**| any vaild JavaScript symbol |
+|**`TAny`**| any JavaScript value including null and undefined|
+|**`TNull`**| represents both null and undefined|
+|**`TNotNull`**| any value that is not null or undefined|
+|**`TBoolean`**| any boolean value true or false |
+|**`TNumber`**| any valid JavaScript number |
+|**`TString`**| any valid JavaScript string |
+|**`TArray`**| any valid JavaScript array |
+|**`TObject`**| any valid JavaScript object |
+|**`TFunction`**| any valid JavaScript function |
+|**`TSymbol`**| any vaild JavaScript symbol |
 
 **_Simple Example_**
 ```javascript
@@ -113,7 +113,7 @@ var a = "hello world";
 types.check(a,TString,true);
 
 //Fails
-types.check(a,TString,true);
+types.check(a,TNumber,true);
 
 ```
 
@@ -128,13 +128,13 @@ There are four advanced annotation functions in TypesJS. These functions allow y
 
 | Type | Description |
 |---|---|
-|**TUnion(T1,T2,...)**| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
-|**TObjectProperty(T)**| checks that the provided type T is defined only on the object literal |
-|**TPrototypeProperty(T)**| checks that the provided type T is defined only on the object's prototype |
-|**TGuard(T,fn)**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
+|[**`TUnion(T1,T2,...)`**](#tunion-t1-t2----)| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
+|**`TObjectProperty(T)`**| checks that the provided type T is defined only on the object literal |
+|**`TPrototypeProperty(T)`**| checks that the provided type T is defined only on the object's prototype |
+|**`TGuard(T,fn)`**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
 
 #
-### TUnion(T1,T2,...)
+### 1`TUnion(T1,T2,...)`
 The TUnion type allows you to create a union of more than one type. This is helpful when a valid value could be more than one type. A common example is when a value could be either a string or a number. 
 ```javascript
   
