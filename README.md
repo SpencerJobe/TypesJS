@@ -129,12 +129,14 @@ There are four advanced annotation functions in TypesJS. These functions allow y
 | Type | Description |
 |---|---|
 |[**`TUnion(T1,T2,...)`**](#tunion-t1-t2----)| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
-|**`TObjectProperty(T)`**| checks that the provided type T is defined only on the object literal |
-|**`TPrototypeProperty(T)`**| checks that the provided type T is defined only on the object's prototype |
-|**`TGuard(T,fn)`**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
+|[**`TObjectProperty(T)`**](#tobjectproperty-t-)| checks that the provided type T is defined only on the object literal |
+|[**`TPrototypeProperty(T)`**](#tprototypeproperty-t-)| checks that the provided type T is defined only on the object's prototype |
+|[**`TGuard(T,fn)`**](#tguard-t-fn-)| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
 
 #
-### 1`TUnion(T1,T2,...)`
+### `TUnion(T1,T2,...)`
+[Back to Advanced Types](#advanced-types)
+
 The TUnion type allows you to create a union of more than one type. This is helpful when a valid value could be more than one type. A common example is when a value could be either a string or a number. 
 ```javascript
   
@@ -172,8 +174,71 @@ types.check(b,TUnion(TString,TNumber), true);
 
 ```
 
+&nbsp;
 
+&nbsp;
 
+#
+### `TObjectProperty(T)`
+[Back to Advanced Types](#advanced-types)
+
+TObjectProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object literal and is NOT present on the prototype. 
+```javascript
+  var TPoint = {
+    x: TNumber,
+    y: TNumber,
+    show: TObjectProperty(TFunction)
+  }
+  
+  var Point = function (x, y) {
+    this.x = x;
+    this.y = y;
+  };
+  Point.prototype.show = function () {
+    
+    console.log(this.x + "," + this.y);
+  };
+  
+  var p1 = new Point(4,4);
+  
+  //Fails because 'show' is located on the object's prototype
+  types.check(p1,TPoint,true);
+ 
+
+```
+
+&nbsp;
+
+&nbsp;
+
+#
+### `TPrototypeProperty(T)`
+[Back to Advanced Types](#advanced-types)
+
+TObjectProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object literal and is NOT present on the prototype. 
+```javascript
+  var TPoint = {
+    x: TNumber,
+    y: TNumber,
+    show: TObjectProperty(TFunction)
+  }
+  
+  var Point = function (x, y) {
+    this.x = x;
+    this.y = y;
+  };
+  Point.prototype.show = function () {
+    
+    console.log(this.x + "," + this.y);
+  };
+  
+  var p1 = new Point(4,4);
+  
+  //Fails because 'show' is located on the object's prototype
+  types.check(p1,TPoint,true);
+ 
+
+```
 ---
 
 &nbsp;
