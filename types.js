@@ -95,7 +95,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         // base function to return actual base type of javascript variable.
         var getType = function (value) {
             
-            var stringType, type;
+            var stringType;
             
             if (value === undefined || value === null) { 
             
@@ -103,8 +103,8 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             }
             
             stringType = Object.prototype.toString.call(value);
-            type = stringType.split(" ")[1];
-            return type.substring(0,type.length-1).toLowerCase();
+            stringType = stringType.split(" ")[1];
+            return stringType.substring(0,type.length-1).toLowerCase();
         };
     
 
