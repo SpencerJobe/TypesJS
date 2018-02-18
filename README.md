@@ -32,11 +32,11 @@ types.check(msg1,TMessage,true); // Passes
 types.check(msg2,TMessage,true); // Fails 
 
 ```
-## Helper Functions
-TypesJS provides helper functions to check JavaScript's base types.
+## TypesJS Functions
+TypesJS provides helper functions to check JavaScript's base types. There are also two funchtions designed to help with checking custom types and applying assertions at runtime.
 
 | Function | Description |
-|---|---|
+|----|---|
 | ``` types.isNull( value ) ``` | Returns true if value is null or undefined |
 | ``` types.isNotNull( value ) ``` |  Returns true if value is Not null or undefined |
 | ``` types.isAny( value ) ``` |  Always returns true.  |
@@ -48,7 +48,7 @@ TypesJS provides helper functions to check JavaScript's base types.
 | ``` types.isFunction( value ) ``` |  Returns true if value is JavaScript Function |
 | ``` types.isObjectProperty( object, propertyName ) ``` |  Returns true if property is attached to the object literal |
 | ``` types.isPrototypeProperty( object, propertyName ) ``` |  Returns true if property is attached to the object's prototype |
-
+| ``` types.check( value, type, [hardFail] ) ``` | Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type |
 
 ## Base Types
 | Type | Description |
