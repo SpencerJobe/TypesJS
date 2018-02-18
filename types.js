@@ -104,7 +104,9 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             
             stringType = Object.prototype.toString.call(value);
             stringType = stringType.split(" ")[1];
-            return stringType.substring(0,stringType.length-1).toLowerCase();
+            stringType = stringType.substring(0,stringType.length-1).toLowerCase();
+
+            return stringType;
         };
     
 
@@ -269,8 +271,11 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         
 
         types.isNumber = function (value) {
+            
+            var result = getType(value);
 
-            return getType(value) === "number";
+            return result === "number" ?
+                String(value) !== "NaN" : false;
         };
 
 
