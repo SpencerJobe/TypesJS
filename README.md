@@ -15,7 +15,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 ---
 
 # Overview
-[Back to Table of Contents](#typesJS)
+[Back to Table of Contents](#typesjs)
 - [Install](#install)
 - [Usage](#usage)
 
@@ -51,7 +51,7 @@ types.check(msg2,TMessage,true); // Fails
 ```
 ---
 # Types
-[Back to Table of Contents](#typesJS)
+[Back to Table of Contents](#typesjs)
 - [Base Types](#base-types)
 - [Advanced Types](#advanced-types)
 
@@ -76,10 +76,13 @@ TypesJS add several functions to the global namespace. These functions act as ty
 ---
 
 ## TypesJS Functions
+[Back to Table of Contents](#typesjs)
+- [`types.check(<value>,<type>,[hardfail])`](#types-check-value-type-hardfail)
+
 TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
 #
-#### `types.check( <value> , <type>, [hardFail] )`
+### `types.check( <value> , <type>, [hardFail] )`
 Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type.
 ```javascript
 var test = "hello world";
