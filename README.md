@@ -8,7 +8,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 #### Table of Contents
 - [Overview](#overview)
 - [Types](#types)
-- [TypesJS Functions](#functions)
+- [TypesJS Functions](#typejs-functions)
 - [Simple Examples](#simple-examples)
 - [Advanced Examples](#advanced-examples)
   
@@ -79,20 +79,20 @@ TypesJS add several functions to the global namespace. These functions act as ty
 TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
 [Back to Table of Contents](#typesjs)
-- [`types.check(<value>,<type>,[hardfail])`](#types-check-value--type-hardfail-)
-- [`types.checkArgs(<arguments>,<type>,[hardfail])`](#types-checkargs-arguments--type-hardfail-)
-- [`types.isNull(<value>)`](#types-isnull-value-)
-- [`types.isNotNull(<value>)`](#types-isnotnull-value-)
-- [`types.isAny(<value>)`](#types-isany-value-)
-- [`types.isBoolean(<value>)`](#types-isboolean-value-)
-- [`types.isNumber(<value>)`](#types-isnumber-value-)
-- [`types.isString(<value>)`](#types-isstring-value-)
-- [`types.isArray(<value>)`](#types-isarray-value-)
-- [`types.isObject(<value)`](#types-isobject-value-)
+- [`types.check(<value>,<type>,[hardfail])`](#typescheck-value-type-hardfail-)
+- [`types.checkArgs(<arguments>,<type>,[hardfail])`](#typescheckargs-arguments-type-hardfail-)
+- [`types.isNull(<value>)`](#typesisnull-value-)
+- [`types.isNotNull(<value>)`](#typesisnotnull-value-)
+- [`types.isAny(<value>)`](#typesisany-value-)
+- [`types.isBoolean(<value>)`](#typesisboolean-value-)
+- [`types.isNumber(<value>)`](#typesisnumber-value-)
+- [`types.isString(<value>)`](#typesisstring-value-)
+- [`types.isArray(<value>)`](#typesisarray-value-)
+- [`types.isObject(<value)`](#typesisobject-value-)
 
 
 #
-#### `types.check( <value> , <type>, [hardFail] )`
+#### `types.check( <value>, <type>, [hardFail] )`
 Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type.
 ```javascript
 var test = "hello world";
@@ -103,7 +103,7 @@ types.check(test,TNumber,true); //Fails, test is not a number
 ```
 
 #
-#### `types.checkArgs( <arguments> , <type> , [hardFail] )` 
+#### `types.checkArgs( <arguments>, <type>, [hardFail] )` 
 Returns true if the provided arguments match the provide type. If the optional `[hardFail]` is set to true, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
 
 Furthermore, the `<type>` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
