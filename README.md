@@ -1,5 +1,6 @@
-# TypesJS
-TypesJS is an optional runtime type checking system for JavaScript.
+# TypesJS 
+
+TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
 
 
 ## Easy to "Install"
