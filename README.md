@@ -61,17 +61,27 @@ types.check(thing2,TYourThing,true);
 
 
 ## Guards - (Runtime Assertions)
-Guards are functions that you write to further check a value. Guards can be added directly to all base types as seen in Example 1 below. Custom types can be wrapped using TGuard as seen in Example 2 below. 
-### Example 1 ###
+Guards are functions that you write to further check a value. Guards can be wrapped around Base Types and Custom Types as seen in examples below. 
+### Base Type with Guard ###
 ```javascript
 
 //x must be positive and y must be negative
 var TPoint = {
-  x : TNumber(function (v) { return v > 0; }),
-  y : TNumber(function (v) { return v < 0; })
+  x : TGuard(TNumber,function (v) { return v > 0; }),
+  y : TGuard(TNumber,function (v) { return v < 0; })
 }
+
+var p1 = { x:10, y:-10 };
+var p2 = { x:-1, y:1 };
+
+//Passes, x is positive, y is negative
+types.check(p1,TPoint,true);
+
+//Fails, x is negative, y is positive
+types.check(p2,TPoint,true);
+
 ```
-## Example 2 ##
+## Custom Type with Guard ##
 ```javascript
 
 var TYourThing = {
@@ -95,9 +105,9 @@ var thing1 = {
   count : 4
 };
 
-//Passes
+//Passes, thing1 matches type, and no guard is used.
 types.check(thing1,TYourThing,true);
 
-//fails because count is less than 10
+//Fails, thing1 matched the type, but it's count is less than 10 which fails the gaurd.
 types.check(thing1,TYourGuardedThing,true);
 ```
