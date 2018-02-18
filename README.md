@@ -7,17 +7,17 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 
 #### Table of Contents
 - [Overview](#overview)
-  - [Install](#install)
-  - [Usage](#usage)
-  
 - [Types](#types)
-  - [Base Types](#base-types)
-  
+- [Functions](#functions)
+- [Simple Examples](#simple-examples)
+- [Advanced Examples](#advanced-examples)
   
 ---
 
 # Overview
 [Back to Table of Contents](#typesJS)
+- [Install](#install)
+- [Usage](#usage)
 
 ## Install
 ```html
