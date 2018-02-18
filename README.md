@@ -49,8 +49,8 @@ types.check(msg2,TMessage,true); // Fails
 ---
 # Types
 [Back to Table of Contents](#table-of-contents)
--[Base Types](#base-types)
--[Advanced Types](#advanced-types)
+- [Base Types](#base-types)
+- [Advanced Types](#advanced-types)
 
 TypesJS add several functions to the global namespace. These function ast as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
 
