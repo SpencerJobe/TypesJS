@@ -1,4 +1,5 @@
-## `THIS DOCUMENT IS UNDER CONSTRUCTION `
+### `THIS DOCUMENT IS UNDER CONSTRUCTION `
+---
 
 # TypesJS 
 
@@ -35,6 +36,7 @@ types.check(msg1,TMessage,true); // Passes
 types.check(msg2,TMessage,true); // Fails 
 
 ```
+---
 
 ## Base Types
 TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. There are nine base type annotation functions and four advanced annotations. The base annotations are listed below. They are used with the `types.check` and `types.checkArgs` functions. The advanced annotations are described later on in this documentation under the "Advanced Types" section. You can also define your own custom types. See the Custom Types section below for more info. 
@@ -51,9 +53,12 @@ TypesJS add several functions to the global namespace. These functions act as ty
 |**TObject**| any valid JavaScript object |
 |**TFunction**| any valid JavaScript function |
 
+---
+
 ## TypesJS Functions
 TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
+#
 #### `types.check( <value> , <type>, [hardFail] )`
 Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type.
 ```javascript
@@ -64,7 +69,6 @@ types.check(test,TString,true); //Passes, test is a string
 types.check(test,TNumber,true); //Fails, test is not a number
 ```
 #
-
 #### `types.checkArgs( <arguments> , <type> , [hardFail] )` 
 Returns true if the provided arguments match the provide type. If the optional `[hardFail]` is set to true, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
 
@@ -86,14 +90,21 @@ Furthermore, the `<type>` parameter should be defined as an object literal who's
   
   add(1,"1"); //Fails
 ```
+#
+#### `types.isNull( <value> )`
+Returns **true** if `<value>` is null or undefined. Otherwise it returns **false**.
 
-**types.isNull( _value_ )** : Returns true if value is null or undefined
+#
+#### `types.isNotNull( <value> )`
+Returns **true** if `<value>` is **NOT** null or undefined. Otherwise it returns **false**.
 
-**types.isNotNull( _value_ )** : Returns true if value is Not null or undefined
+#
+#### `types.isAny( <value> )`
+Always returns true. [More Info](https://en.wikipedia.org/wiki/Philosophy)
 
-**types.isAny( _value_ )** : Always returns true. [More Info](https://en.wikipedia.org/wiki/Philosophy)
-
-**types.isBoolean( _value_ )** : Returns true if value is JavaScript Boolean
+#
+#### `types.isBoolean( <value> )` 
+Returns true if `<value>` is JavaScript Boolean.
 
 **types.isNumber( _value_ )** : Returns true if value is JavaScript Number
 
