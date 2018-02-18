@@ -87,7 +87,9 @@ TypesJS add several functions to the global namespace. These function ast as typ
 &nbsp;
 
 ## Base Types
-TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. There are nine base type annotation functions and four advanced annotations. The base annotations are listed below. They are used with the `types.check` and `types.checkArgs` functions. The advanced annotations are described later on in this documentation under the "Advanced Types" section. You can also define your own custom types. See the Custom Types section below for more info. 
+[Back to Types](#types)
+
+TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. There are 10 base type annotation functions. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types.
 
 | Type | Description |
 |---|---|
@@ -102,6 +104,16 @@ TypesJS add several functions to the global namespace. These functions act as ty
 |**TFunction**| any valid JavaScript function |
 |**TSymbol**| any vaild JavaScript symbol |
 
+
+## Advanced Types
+[Back to Types](#types)
+
+| Type | Description |
+|---|---|
+|**TUnion(T1,T2,...)**| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
+|**TObjectProperty(T)**| checks that the provided type T is defined only on the object literal |
+|**TPrototypeProperty(T)**| checks that the provided type T is defined only on the object's prototype |
+|**TGuard(T,fn)**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
 ---
 
 &nbsp;
@@ -125,8 +137,8 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 - [`types.isObject(<value>)`](#typesisobject-value-)
 - [`types.isFunction(<value>)`](#typesisfunction-value-)
 - [`types.isSymbol(<value>)`](#typesissymbol-value-)
-- [`types.isObjectProperty( <object>, <propertyName>)`](#typesisobjectproperty-object-propertyname-)
-- [`types.isPrototypeProperty( <object>, <propertyName>)`](#typesisprototypeproperty-object-propertyname-)
+- [`types.isObjectProperty( <object>, <propertyName>)`](#typesisobjectproperty-object-propertyname)
+- [`types.isPrototypeProperty( <object>, <propertyName>)`](#typesisprototypeproperty-object-propertyname)
 
 &nbsp;
 
@@ -601,18 +613,13 @@ Returns **true** if `<propertyName>` is a property on the `<object>.prototype` a
 
 ---
 
+<!-- ********************************************************************************************************************* -->
 ## Custom Types
 -Section under construction-
 
 
+<!-- ********************************************************************************************************************* -->
 
-## Advanced Types
-| Type | Description |
-|---|---|
-|**TUnion(T1,T2,...)**| a union of two or more types. This allows you to handle instances where more than one type is acceptable. |
-|**TObjectProperty(T)**| checks that the provided type T is defined only on the object literal |
-|**TPrototypeProperty(T)**| checks that the provided type T is defined only on the object's prototype |
-|**TGuard(T,fn)**| checks the type T first, then passes value to provided guard function. Guards return true or false. False is considered to be a type failure. |
 
 
 ## Guards - (Runtime Assertions)
