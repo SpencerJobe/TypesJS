@@ -32,6 +32,13 @@ types.check(msg1,TMessage,true); // Passes
 types.check(msg2,TMessage,true); // Fails 
 
 ```
+## Helper Functions
+TypesJS has server helper functions to check JavaScript's base types.
+| Function | Description |
+|---|---|
+
+
+
 ## Base Types
 | Type | Description |
 |---|---|
@@ -56,7 +63,7 @@ types.check(msg2,TMessage,true); // Fails
 
 ## Guards - (Runtime Assertions)
 Guards are functions that you write to further check a value. Guards can be wrapped around Base Types and Custom Types as seen in examples below. 
-### Base Type with Guard ###
+### Base Type with Guard
 ```javascript
 
 //x must be positive and y must be negative
@@ -75,7 +82,7 @@ types.check(p1,TPoint,true);
 types.check(p2,TPoint,true);
 
 ```
-## Custom Type with Guard ##
+### Custom Type with Guard 
 ```javascript
 
 var TYourThing = {
