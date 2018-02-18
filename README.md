@@ -399,7 +399,18 @@ Returns **true** if `<value>` is a JavaScript String
 ```javascript
 
   var a = "Hello world";
-  var b = 42;
+  var b = "";
+  var c = 42;
+  var d = true;
+  
+  
+  types.isString(a); // true
+  
+  types.isString(b); // true
+  
+  types.isString(c); // false
+
+  types.isString(d); // false
 
 ```
 
@@ -424,6 +435,23 @@ Returns **true** if `<value>` is a JavaScript Object
 **_Examples_**
 
 ```javascript
+
+  var a = { x:3, y:4 };
+  var b = { };
+  var c = Object.create(null);
+  var d = [1,2,3];
+  
+  types.isObject(a); // true
+  
+  types.isObject(b); // true
+  
+  types.isObject(c); // true
+
+  types.isObject(d); // false
+  
+  types.isObject(window); // true
+  
+  types.isObject(document.body); // true
 
 ```
 
