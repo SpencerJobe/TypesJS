@@ -5,6 +5,14 @@
 
 TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
 
+#### Table of Contents
+- [Overview](README.md#Overview)
+- [Types](README.md#Types)
+  - [Base Types](README.md#BaseTypes)
+  
+  
+
+# Overview
 
 ## Easy to "Install"
 ```html
@@ -37,6 +45,9 @@ types.check(msg2,TMessage,true); // Fails
 
 ```
 ---
+# Types
+TypesJS add several functions to the global namespace. These function ast as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
+
 
 ## Base Types
 TypesJS add several functions to the global namespace. These functions act as type annotations for the base types in JavaScript. There are nine base type annotation functions and four advanced annotations. The base annotations are listed below. They are used with the `types.check` and `types.checkArgs` functions. The advanced annotations are described later on in this documentation under the "Advanced Types" section. You can also define your own custom types. See the Custom Types section below for more info. 
