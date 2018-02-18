@@ -164,13 +164,13 @@ var c = document.createElement("p");
 var TStrumber = TUnion(TString,TNumber);
 
 // Passes a is a string and TString is a member of the union type TStrumber
-types.check(a,TUnion(TString,TNumber), true);
+types.check(a,TStrumber, true);
 
 // Passes b is a number and TNumber is a member of the union type TStrumber
-types.check(b,TUnion(TString,TNumber), true);
+types.check(b,TStrumber, true);
 
 // Fails c is an object and TObject is NOT a member of the union type TStrumber
-types.check(b,TUnion(TString,TNumber), true);
+types.check(b,TStrumber, true);
 
 ```
 
