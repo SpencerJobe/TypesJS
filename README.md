@@ -10,9 +10,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 - [Types](#types)
 - [TypesJS Functions](#typesjs-functions)
 
-# Install
-[Table of Contents](#tableofcontents)
-
+### Install
 ```html
 <!DOCTYPE html>
   <head>
@@ -20,11 +18,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
   </head>
   ...
 ```
-
-&nbsp;
-
-# Usage
-[Tables of Contents](#tableofcontents)
+### Usage
 
 There are simple Base Types that can be used by themselves or combined to make more complex types.
 
