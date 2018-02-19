@@ -96,8 +96,8 @@ TypesJS add several functions to the global namespace. These function _act_ as t
 
 There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. Click on the type in the table below to view examples. 
 
-| Type | Description | Link |
-|---|---|---|
+| Type | Description |
+|---|---|
 |[**`TAny`**](#tany)| any JavaScript value including null and undefined|
 |[**`TNull`**](#tnull)| represents both null and undefined|
 |[**`TNotNull`**](#tnotnull)| any value that is not null or undefined|
