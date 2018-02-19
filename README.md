@@ -97,16 +97,16 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 
 | Type | Description | Link |
 |---|---|---|
-|**`TAny`**| any JavaScript value including null and undefined| [Examples](#tany-examples) |
-|**`TNull`**| represents both null and undefined| [Examples](#tnull-examples) |
-|**`TNotNull`**| any value that is not null or undefined| [Examples](#tnotnull-examples) |
-|**`TBoolean`**| any boolean value true or false | [Examples](#tboolean-examples) |
-|**`TNumber`**| any valid JavaScript number | [Examples](#tnumber-examples) |
-|**`TString`**| any valid JavaScript string | [Examples](#tstring-examples) |
-|**`TArray`**| any valid JavaScript array | [Examples](#tarray-examples) |
-|**`TObject`**| any valid JavaScript object |[Examples](#tobject-examples) |
-|**`TFunction`**| any valid JavaScript function | [Examples](#tfunction-examples) |
-|**`TSymbol`**| any vaild JavaScript symbol | [Examples](#tsymbol-examples) |
+|**`TAny`**| any JavaScript value including null and undefined|
+|**`TNull`**| represents both null and undefined|
+|**`TNotNull`**| any value that is not null or undefined|
+|**`TBoolean`**| any boolean value true or false |
+|**`TNumber`**| any valid JavaScript number |
+|**`TString`**| any valid JavaScript string |
+|**`TArray`**| any valid JavaScript array |
+|**`TObject`**| any valid JavaScript object |
+|**`TFunction`**| any valid JavaScript function |
+|**`TSymbol`**| any vaild JavaScript symbol |
 
 **_Simple Example_**
 ```javascript
@@ -120,6 +120,99 @@ types.check(a,TString,true);
 types.check(a,TNumber,true);
 
 ```
+
+
+## TAny
+[Back to Base Types](#base-types)
+
+TAny examples are comming soon...
+
+
+&nbsp;
+
+&nbsp;
+
+## TNull
+[Back to Base Types](#base-types)
+
+TNull examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TNotNull
+[Back to Base Types](#base-types)
+
+TNotNull examples are coming soon
+
+
+&nbsp;
+
+&nbsp;
+
+## TBoolean
+[Back to Base Types](#base-types)
+
+TBoolean examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TNumber
+[Back to Base Types](#base-types)
+
+TNumber examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TString
+[Back to Base Types](#base-types)
+
+TString Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TArray
+[Back to Base Types](#base-types)
+
+TArray Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TObject
+[Back to Base Types](#base-types)
+
+TObject Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TFunction
+[Back to Base Types](#base-types)
+
+TFunction Examples are coming soon.
+
+&nbsp;
+
+&nbsp;
+
+## TSymbol
+[Back to Base Types](#base-types)
+
+TSymbol examples coming soon
+
+&nbsp;
+
+&nbsp;
 
 &nbsp; 
 
@@ -791,129 +884,6 @@ Returns **true** if `<propertyName>` is a property on the `<object>.prototype` a
 ---
 
 ## Examples
-
-
-
-## TAny Examples
-[Back to Examples](#examples)
-
-TAny examples are comming soon...
-
-
-&nbsp;
-
-&nbsp;
-
-## TNull Examples
-[Back to Examples](#examples)
-
-TNull examples are coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TNotNull Examples
-[Back to Examples](#examples)
-
-TNotNull examples are coming soon
-
-
-&nbsp;
-
-&nbsp;
-
-## TBoolean Examples
-[Back to Examples](#examples)
-
-TBoolean examples are coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TNumber Examples
-[Back to Examples](#examples)
-
-TNumber examples are coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TString Examples
-[Back to Examples](#examples)
-
-TString Examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TArray Examples
-[Back to Examples](#examples)
-
-TArray Examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TObject Examples
-[Back to Examples](#examples)
-
-TObject Examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TFunction Examlpes
-[Back to Examples](#examples)
-
-TFunction Examples are coming soon.
-
-&nbsp;
-
-&nbsp;
-
-## TSymbol Examples
-[Back to Examples](#examples)
-
-TSymbol examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TObjectProperty Examples
-[Back to Examples](#examples)
-
-TObjectProperty Examples coming soon
-
-
-&nbsp;
-
-&nbsp;
-
-## TPrototypeProperty Examples
-
-TPrototypeProperty examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-## TGuard Examples
-
-TGuard examples coming soon
-
-&nbsp;
-
-&nbsp;
-
-
-
 
 ---
 <!-- ********************************************************************************************************************* -->
