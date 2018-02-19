@@ -399,7 +399,7 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 - [`types.isFunction(<value>)`](#typesisfunction-value-)
 - [`types.isSymbol(<value>)`](#typesissymbol-value-)
 - [`types.isObjectProperty( <object>, <propertyName>)`](#typesisobjectproperty-object-propertyname)
-- [`types.isPrototypeProperty( <object>, <propertyName>)`](#typesisprototypeproperty-object-propertyname)
+- [`types.isPrototypeProperty( <object>, <propertyName>)`](#typesisprototypeproperty-object-propertyname-)
 
 &nbsp;
 
