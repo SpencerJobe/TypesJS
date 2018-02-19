@@ -851,7 +851,7 @@ Returns **true** if `<propertyName>` is a property on the object literal `<objec
 
 <!-- ===================================================================== -->
 #
-### `types.isPrototypeProperty( <object> , <propertyName> )`
+### `types.isPrototypeProperty( <object>, <propertyName> )`
 [Back to Function List](#typesjs-functions)
 
 | Parameter | Type |  Description |
