@@ -93,34 +93,22 @@ TypesJS add several functions to the global namespace. These function _act_ as t
 ## Base Types
 [Back to Types](#types)
 
-There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
+There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. Click on the type in the table below to view examples. 
 
 | Type | Description | Link |
 |---|---|---|
-|**`TAny`**| any JavaScript value including null and undefined|
-|**`TNull`**| represents both null and undefined|
-|**`TNotNull`**| any value that is not null or undefined|
-|**`TBoolean`**| any boolean value true or false |
-|**`TNumber`**| any valid JavaScript number |
-|**`TString`**| any valid JavaScript string |
-|**`TArray`**| any valid JavaScript array |
-|**`TObject`**| any valid JavaScript object |
-|**`TFunction`**| any valid JavaScript function |
-|**`TSymbol`**| any vaild JavaScript symbol |
+|[**`TAny`**](#tany)| any JavaScript value including null and undefined|
+|[**`TNull`**](#tnull)| represents both null and undefined|
+|[**`TNotNull`**](#tnotnull)| any value that is not null or undefined|
+|[**`TBoolean`**](#tboolean)| any boolean value true or false |
+|[**`TNumber`**](#tnumber)| any valid JavaScript number |
+|[**`TString`**](#tstring)| any valid JavaScript string |
+|[**`TArray`**](#tarray)| any valid JavaScript array |
+|[**`TObject`**](#tobject)| any valid JavaScript object |
+|[**`TFunction`**](#tfunction)| any valid JavaScript function |
+|[**`TSymbol`**](#tsymbol)| any vaild JavaScript symbol |
 
-**_Simple Example_**
-```javascript
-
-var a = "hello world";
-
-//Passes
-types.check(a,TString,true);
-
-//Fails
-types.check(a,TNumber,true);
-
-```
-
+#
 
 ## TAny
 [Back to Base Types](#base-types)
