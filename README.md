@@ -110,7 +110,7 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 
 #
 
-## TAny
+## `TAny`
 [Back to Base Types](#base-types)
 
 TAny examples are comming soon...
@@ -120,7 +120,7 @@ TAny examples are comming soon...
 
 &nbsp;
 
-## TNull
+## `TNull`
 [Back to Base Types](#base-types)
 
 TNull examples are coming soon
@@ -129,7 +129,7 @@ TNull examples are coming soon
 
 &nbsp;
 
-## TNotNull
+## `TNotNull`
 [Back to Base Types](#base-types)
 
 TNotNull examples are coming soon
@@ -139,7 +139,7 @@ TNotNull examples are coming soon
 
 &nbsp;
 
-## TBoolean
+## `TBoolean`
 [Back to Base Types](#base-types)
 
 TBoolean examples are coming soon
@@ -148,7 +148,7 @@ TBoolean examples are coming soon
 
 &nbsp;
 
-## TNumber
+## `TNumber`
 [Back to Base Types](#base-types)
 
 TNumber examples are coming soon
@@ -157,7 +157,7 @@ TNumber examples are coming soon
 
 &nbsp;
 
-## TString
+## `TString`
 [Back to Base Types](#base-types)
 
 TString Examples coming soon
@@ -166,7 +166,7 @@ TString Examples coming soon
 
 &nbsp;
 
-## TArray
+## `TArray`
 [Back to Base Types](#base-types)
 
 TArray Examples coming soon
@@ -175,7 +175,7 @@ TArray Examples coming soon
 
 &nbsp;
 
-## TObject
+## `TObject`
 [Back to Base Types](#base-types)
 
 TObject Examples coming soon
@@ -184,7 +184,7 @@ TObject Examples coming soon
 
 &nbsp;
 
-## TFunction
+## `TFunction`
 [Back to Base Types](#base-types)
 
 TFunction Examples are coming soon.
@@ -193,7 +193,7 @@ TFunction Examples are coming soon.
 
 &nbsp;
 
-## TSymbol
+## `TSymbol`
 [Back to Base Types](#base-types)
 
 TSymbol examples coming soon
