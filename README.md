@@ -10,8 +10,8 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 - [Overview](#overview)
 - [Types](#types)
 - [TypesJS Functions](#typesjs-functions)
-- [Simple Examples](#simple-examples)
-- [Advanced Examples](#advanced-examples)
+- [Examples](#examples)
+
   
 ---
 &nbsp;
@@ -25,6 +25,8 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 
 
 ## Install
+[Back to Overview](#overview)
+
 ```html
 <!DOCTYPE html>
   <head>
@@ -36,6 +38,8 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 &nbsp;
 
 ## Usage
+[Back to Overview](#overview)
+
 There are simple Base Types that can be used by themselves or combined to make more complex types.
 
 ```javascript
@@ -80,7 +84,7 @@ types.check(msg2,TMessage,true);
 - [Base Types](#base-types)
 - [Advanced Types](#advanced-types)
 
-TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base, JavaScript types and a few additional advanced types. You can read more about them below. 
+TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base types in JavaScript and a few additional advanced types. You can read more about them below. 
 
 &nbsp;
 
@@ -89,20 +93,20 @@ TypesJS add several functions to the global namespace. These function _act_ as t
 ## Base Types
 [Back to Types](#types)
 
-There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` to check the type of a given value. See the Custom Types section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
+There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. The example below shows how you would use a base type to check the type of a value. For more examples check out the Examples section of this documentation.
 
-| Type | Description |
-|---|---|
-|**`TAny`**| any JavaScript value including null and undefined|
-|**`TNull`**| represents both null and undefined|
-|**`TNotNull`**| any value that is not null or undefined|
-|**`TBoolean`**| any boolean value true or false |
-|**`TNumber`**| any valid JavaScript number |
-|**`TString`**| any valid JavaScript string |
-|**`TArray`**| any valid JavaScript array |
-|**`TObject`**| any valid JavaScript object |
-|**`TFunction`**| any valid JavaScript function |
-|**`TSymbol`**| any vaild JavaScript symbol |
+| Type | Description | Link |
+|---|---|---|
+|**`TAny`**| any JavaScript value including null and undefined| [Examples](#tany-examples) |
+|**`TNull`**| represents both null and undefined| [Examples](#tnull-examples) |
+|**`TNotNull`**| any value that is not null or undefined| [Examples](#tnotnull-examples) |
+|**`TBoolean`**| any boolean value true or false | [Examples](#tboolean-examples) |
+|**`TNumber`**| any valid JavaScript number | [Examples](#tnumber-examples) |
+|**`TString`**| any valid JavaScript string | [Examples](#tstring-examples) |
+|**`TArray`**| any valid JavaScript array | [Examples](#tarray-examples) |
+|**`TObject`**| any valid JavaScript object |[Examples](#tobject-examples) |
+|**`TFunction`**| any valid JavaScript function | [Examples](#tfunction-examples) |
+|**`TSymbol`**| any vaild JavaScript symbol | [Examples](#tsymbol-examples) |
 
 **_Simple Example_**
 ```javascript
@@ -784,7 +788,134 @@ Returns **true** if `<propertyName>` is a property on the `<object>.prototype` a
 ## Custom Types
 -Section under construction-
 
+---
 
+## Examples
+
+
+
+## TAny Examples
+[Back to Examples](#examples)
+
+TAny examples are comming soon...
+
+
+&nbsp;
+
+&nbsp;
+
+## TNull Examples
+[Back to Examples](#examples)
+
+TNull examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TNotNull Examples
+[Back to Examples](#examples)
+
+TNotNull examples are coming soon
+
+
+&nbsp;
+
+&nbsp;
+
+## TBoolean Examples
+[Back to Examples](#examples)
+
+TBoolean examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TNumber Examples
+[Back to Examples](#examples)
+
+TNumber examples are coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TString Examples
+[Back to Examples](#examples)
+
+TString Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TArray Examples
+[Back to Examples](#examples)
+
+TArray Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TObject Examples
+[Back to Examples](#examples)
+
+TObject Examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TFunction Examlpes
+[Back to Examples](#examples)
+
+TFunction Examples are coming soon.
+
+&nbsp;
+
+&nbsp;
+
+## TSymbol Examples
+[Back to Examples](#examples)
+
+TSymbol examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TObjectProperty Examples
+[Back to Examples](#examples)
+
+TObjectProperty Examples coming soon
+
+
+&nbsp;
+
+&nbsp;
+
+## TPrototypeProperty Examples
+
+TPrototypeProperty examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+## TGuard Examples
+
+TGuard examples coming soon
+
+&nbsp;
+
+&nbsp;
+
+
+
+
+---
 <!-- ********************************************************************************************************************* -->
 
 
