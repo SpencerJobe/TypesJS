@@ -6,7 +6,6 @@
 
 TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
 
-#### Table of Contents
 - [Types](#types)
 - [TypesJS Functions](#typesjs-functions)
 
@@ -60,7 +59,7 @@ types.check(msg2,TMessage,true);
 
 <!-- ********************************************************************************************************* -->
 # Types
-[Back to Table of Contents](#typesjs)
+Quick Nav: [Home](#typesjs) 
 
 - [Base Types](#base-types)
 - [Advanced Types](#advanced-types)
@@ -91,10 +90,23 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 
 #
 ### `TAny`
-[Back to Base Types](#base-types)
+Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
 
-TAny examples are comming soon...
+The `TAny` type represents any JavaScript value including **null** and **undefined**. 
 
+**_Example_**
+```javascript
+
+  // returns true
+  types.check(42,TAny,true);
+  
+  // returns true
+  types.check(null,TAny,true);
+  
+  // returns true
+  types.check(undefined,TAny,true);
+
+```
 
 &nbsp;
 
@@ -102,7 +114,7 @@ TAny examples are comming soon...
 
 #
 ### `TNull`
-[Back to Base Types](#base-types)
+Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
 
 TNull examples are coming soon
 
