@@ -18,7 +18,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 &nbsp;
 
 # Install
-Nav:// [Home](#typesjs) / Install
+//[Home](#typesjs)/Install
 
 Just add a script tag to the head of your document. 
 
