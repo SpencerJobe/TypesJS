@@ -299,7 +299,7 @@ The `TArray` type represents JavaScript's **`array`** type. This annotation is a
     types.check(A, TArray(TAny) );
     
     // returns false;
-    types.check(B, TArray(TNumber) );
+    types.check(A, TArray(TNumber) );
     
     // returns true;
     types.check(B, TArray(TNumber) );
