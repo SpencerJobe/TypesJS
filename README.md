@@ -9,7 +9,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 - [Install](#install)
 - [Quick Start](#quick-start)
 - [Types](#types)
-- [Functions](#typesjs-functions)
+- [Functions](#functions)
 
 ---
 
