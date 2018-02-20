@@ -95,9 +95,9 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         // base function to return actual base type of javascript variable.
         var getType = function (value) {
             
-            var baseTypes = "[boolean][number][string][object][function][array][symbol]";
+            var baseTypeList = "[boolean][number][string][object][function][array][symbol]";
             var stringType;
-            var base;
+            var baseType;
             var baseText = "";
 
             if (value === undefined || value === null) { 
@@ -110,7 +110,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             baseType = baseText.split(" ")[0].substring(1).toLowerCase();
             stringType = stringType.substring(0,stringType.length-1).toLowerCase();
             
-            if (baseTypes.indexOf("[" + stringType + "]") === -1) {
+            if (baseTypeList.indexOf("[" + stringType + "]") === -1) {
                 
                 return baseType;
             }
