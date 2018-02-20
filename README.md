@@ -103,7 +103,7 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 |[**`TBoolean`**](#tboolean)| any boolean value true or false |
 |[**`TNumber`**](#tnumber)| any valid JavaScript number |
 |[**`TString`**](#tstring)| any valid JavaScript string |
-|[**`TArray`**](#tarray)| any valid JavaScript array |
+|[**`TArray(T)`**](#tarray-t-)| any valid JavaScript array |
 |[**`TObject`**](#tobject)| any valid JavaScript object |
 |[**`TFunction`**](#tfunction)| any valid JavaScript function |
 |[**`TSymbol`**](#tsymbol)| any vaild JavaScript symbol |
@@ -118,13 +118,13 @@ The `TAny` type represents any JavaScript value including **null** and **undefin
 ```javascript
 
   // returns true
-  types.check(42,TAny,true);
+  types.check(42,TAny);
   
   // returns true
-  types.check(null,TAny,true);
+  types.check(null,TAny);
   
   // returns true
-  types.check(undefined,TAny,true);
+  types.check(undefined,TAny);
 
 ```
 
@@ -136,7 +136,21 @@ The `TAny` type represents any JavaScript value including **null** and **undefin
 ### `TNull`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNull
 
-TNull examples are coming soon
+The `TNull` type represents JavaScript's **null** and **undefined** values.
+
+**_Example_**
+```javascript
+
+  // returns true
+  types.check(null,TNull);
+  
+  // returns true
+  types.check(undefined,TNull);
+  
+  // returns false
+  types.check(42,TNull);
+
+```
 
 &nbsp;
 
@@ -146,8 +160,24 @@ TNull examples are coming soon
 ### `TNotNull`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNotNull
 
-TNotNull examples are coming soon
+The `TNotNull` type represents any JavaScript value that is *NOT* **null** or **undefined**.
 
+**_Example_**
+```javascript
+
+  // returns true
+  types.check(42,TNotNull);
+  
+  // returns true
+  types.check("hello world",TNotNull);
+  
+  // returns false
+  types.check(null,TNotNull);
+  
+  // returns false
+  types.check(undefined,TNotNull);
+
+```
 
 &nbsp;
 
@@ -157,8 +187,24 @@ TNotNull examples are coming soon
 ### `TBoolean`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TBoolean
 
-TBoolean examples are coming soon
+The `TBoolean` type represents JavaScript's Boolean values **true** and **false**.
 
+**_Example_**
+```javascript
+  
+  // returns true
+  types.check(true,TBoolean);
+  
+  // returns true
+  types.check(false,TBoolean);
+  
+  // returns false
+  types.check(1,TBoolean);
+  
+  // returns false
+  types.check("true",TBoolean);
+
+```
 &nbsp;
 
 &nbsp;
@@ -167,8 +213,21 @@ TBoolean examples are coming soon
 ### `TNumber`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNumber
 
-TNumber examples are coming soon
+The `TNumber` type represents JavaScript's **`number`** type. However, unlike JavaScript, **`NaN`** is *NOT* considered a number.
 
+**_Example_**
+```javascript
+
+  // returns true
+  types.check(42,TNumber);
+  
+  // returns true
+  types.check(Infinity,TNumber);
+  
+  // returns false
+  types.check(NaN,TNumber);
+
+```
 &nbsp;
 
 &nbsp;
@@ -177,17 +236,52 @@ TNumber examples are coming soon
 ### `TString`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TString
 
-TString Examples coming soon
+The `TString` type represents JavaScript's **`string`** type.
+
+**_Example_**
+```javascript
+  
+  // returns true
+  types.check("Hello world",TString);
+  
+  // returns false
+  types.check(42,TString);
+  
+  // returns true
+  types.check("",TString);
+  
+```
 
 &nbsp;
 
 &nbsp;
 
 #
-### `TArray`
+### `TArray( T )`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TArray
 
-TArray Examples coming soon
+The `TArray` type represents JavaScript's **`array`** type. This annotation is a bit more complex than the others because you must provide a type `T` that represents the elements' type. You can use the `TAny` type if you don't care about enforcing a type across the elements of the array. 
+
+**_Example_**
+```javascript
+  
+    var A = [1, 2, "three", "four", { val: 6 }];
+    var B = [1, 2, 3, 4];
+    var C = [ "hello ", "world"];
+    
+    // returns true;
+    types.check(A, TArray(TAny) );
+    
+    // returns false;
+    types.check(B, TArray(TNumber) );
+    
+    // returns true;
+    types.check(B, TArray(TNumber) );
+    
+    // returns true;
+    types.check(C, TArray(TString) );
+    
+```
 
 &nbsp;
 
