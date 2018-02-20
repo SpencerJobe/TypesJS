@@ -78,7 +78,7 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         // each call to types.check / checkArgs
         var errorLog = []; 
         
-
+ 
         // Increments when the types.check /checkArgs is called, and decrements on completion. 
         // This is used to change functionality of the Advanced Types:
         // TArray TObjectProperty TPrototypeProperty and TGuard
@@ -95,16 +95,25 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
         // base function to return actual base type of javascript variable.
         var getType = function (value) {
             
+            var baseTypes = "[boolean][number][string][object][function][array][symbol]";
             var stringType;
-            
+            var base;
+            var baseText = "";
+
             if (value === undefined || value === null) { 
             
                 return "undefined";
             }
             
-            stringType = Object.prototype.toString.call(value);
-            stringType = stringType.split(" ")[1];
+            baseText = Object.prototype.toString.call(value);
+            stringType = baseText.split(" ")[1];
+            baseType = baseText.split(" ")[0].substring(1).toLowerCase();
             stringType = stringType.substring(0,stringType.length-1).toLowerCase();
+            
+            if (baseTypes.indexOf("[" + stringType + "]") === -1) {
+                
+                return baseType;
+            }
 
             return stringType;
         };
@@ -298,11 +307,15 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
 
 
         types.isFunction = function (value) {
-           // return !types.isString(value) &&  (String(value).indexOf("function") === 0);
-
+          
             return getType(value) === "function";
         };
 
+
+        types.isSymbol = function (value) {
+
+            return getType(value) === "symbol";
+        };
 
         types.isPrototypeProperty = function (target,name) {
             
@@ -462,6 +475,13 @@ DESCRIPTION: Adds type checking functions and proxy-annotations that can be
             return types.isFunction(value);
         };
         win.TFunction.__TypeID = "TFunction";
+
+
+        win.TSymbol = function (value) {
+
+            return types.isSymbol(value);
+        };
+        win.TFunction.__TypeID = "TSymbol"
 
 
 
