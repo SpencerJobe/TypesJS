@@ -291,7 +291,37 @@ The `TArray` type represents JavaScript's **`array`** type. This annotation is a
 ### `TObject`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TObject
 
-TObject Examples coming soon
+The `TObject` type represents JavaScript's 'object' type.
+
+**_Example_**
+```javascript
+
+  var A = { }
+  var B = Object.create(null);
+  var C = {
+    x: 10,
+    y: 10
+  };
+
+  // returns true
+  types.check(A,TObject);
+  
+  // returns true
+  types.check(B,TObject);
+  
+  // returns true
+  types.check(C,TObject);
+
+  // returns true
+  types.check(window,TObject);
+  
+  // returns true
+  types.check(document.createElement("p"));
+  
+  // returns false
+  types.check("hello world",TObject);
+  
+```
 
 &nbsp;
 
@@ -301,7 +331,26 @@ TObject Examples coming soon
 ### `TFunction`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TFunction
 
-TFunction Examples are coming soon.
+The `TFunction` type represents JavaScript's `function` type.
+
+**_Example_**
+```javascript
+
+  var myFunc = function (a, b) {
+    
+    return a + b;
+  };
+
+  // returns true
+  types.check(myFunc,TFunction);
+  
+  // returns true
+  types.check(window.alert,TFunction);
+
+  // returns false
+  types.check("test",TFunction);
+
+```
 
 &nbsp;
 
@@ -311,7 +360,24 @@ TFunction Examples are coming soon.
 ### `TSymbol`
 // [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TSymbol
 
-TSymbol examples coming soon
+The `TSymbol` type represents JavaScript's `symbol` type.
+
+**_Example_**
+```javascript
+  const A = Symbol();
+  const B = Symbol("test");
+  const C = "NOT_A_SYMBOL";
+  
+  // returns true
+  types.check(A,TSymbol);
+  
+  // returns true
+  types.check(B,TSymbol);
+  
+  // returns false
+  types.check(C,TSymbol);
+  
+```
 
 &nbsp;
 
