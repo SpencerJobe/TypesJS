@@ -10,6 +10,7 @@ TypesJS is a runtime type checking system for JavaScript. You put the types wher
 - [TypesJS Functions](#typesjs-functions)
 
 ### Install
+Just add a script tag to the head of your document. 
 ```html
 <!DOCTYPE html>
   <head>
@@ -61,10 +62,10 @@ types.check(msg2,TMessage,true);
 # Types
 Quick Nav: [Home](#typesjs) 
 
+TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base types in JavaScript and a few additional advanced types. You can read more about them below. 
+
 - [Base Types](#base-types)
 - [Advanced Types](#advanced-types)
-
-TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base types in JavaScript and a few additional advanced types. You can read more about them below. 
 
 &nbsp;
 
@@ -72,7 +73,6 @@ TypesJS add several functions to the global namespace. These function _act_ as t
 
 ## Base Types
 Quick Nav: [Home](#typesjs) / [Types](#types) 
-
 
 There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. Click on the type in the table below to view examples. 
 
