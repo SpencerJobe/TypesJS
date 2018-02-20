@@ -436,14 +436,14 @@ var a = "hello world";
 var b = 42;
 var c = document.createElement("p");
 
-// Passes a is a string and TString is a member of the union type
+// Passes - a is a string and TString is a member of the union type
 types.check(a,TUnion(TString,TNumber), true);
 
-// Passes b is a number and TNumber is a member of the union type
+// Passes - b is a number and TNumber is a member of the union type
 types.check(b,TUnion(TString,TNumber), true);
 
-// Fails c is an object and TObject is NOT a member of the union type
-types.check(b,TUnion(TString,TNumber), true);
+// Fails - c is an object and TObject is NOT a member of the union type
+types.check(c,TUnion(TString,TNumber), true);
 
 ```
 You won't want to type `TUnion(TString,TNumber)` every time you need to check your union type. So, you can store it in a JavaScript variable instead. 
@@ -455,14 +455,14 @@ var c = document.createElement("p");
 
 var TStrumber = TUnion(TString,TNumber);
 
-// Passes a is a string and TString is a member of the union type TStrumber
+// Passes - a is a string and TString is a member of the union type TStrumber
 types.check(a,TStrumber, true);
 
-// Passes b is a number and TNumber is a member of the union type TStrumber
+// Passes - b is a number and TNumber is a member of the union type TStrumber
 types.check(b,TStrumber, true);
 
-// Fails c is an object and TObject is NOT a member of the union type TStrumber
-types.check(b,TStrumber, true);
+// Fails - c is an object and TObject is NOT a member of the union type TStrumber
+types.check(c,TStrumber, true);
 
 ```
 
@@ -617,7 +617,7 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 
 **_Information_** 
 
-Returns true if value matches the provided type. If the optional hardFail is set to true, then the check will throw an error if the value doesn't match type.
+Returns **true** if value matches the provided type. Otherwise it returns **false**. If the optional `hardFail` is set to true, then the check will throw an error if the value doesn't match type.
 
 **_Examples_** 
 
@@ -647,7 +647,7 @@ types.check(test,TNumber,true); //Fails, test is not a number
 
 **_Information_** 
 
-Returns **true** if the provided arguments match the provide type. Otherwise it returns **false** If the optional `[hardFail]` is set to **true**, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
+Returns **true** if the provided arguments match the provide type. Otherwise it returns **false**. If the optional `[hardFail]` is set to **true**, then checkArgs will throw an error if the arguments don't match the type. This function should be used inside a function to check the values passed to it. The `<arguments>` parameter should always be JavaScript's **`arguments`** variable as seen in the example below. 
 
 Furthermore, the `<type>` parameter should be defined as an object literal who's properties correspond to the expected types of the arguments passed to the containing function.
 
