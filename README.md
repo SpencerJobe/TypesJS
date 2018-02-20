@@ -39,8 +39,7 @@ Just add a script tag to the head of your document.
 # Quick Start
 // [Home](#typesjs) / Quick Start
 
-There are simple Base Types that can be used by themselves or combined to make more complex types.
-
+There are simple Base Types that can be used by themselves or combined to make more complex types. Check out the [Types](#types) section for details on each type. Check out the [Functions](#functions) for more information on the `types.check` function and the other helper functions provided by TypesJS.
 ```javascript
 
 var test = "Hello world";
@@ -70,14 +69,11 @@ types.check(msg1,TMessage,true);
 types.check(msg2,TMessage,true);
 
 ```
-Check out the [Types](#types) section for details on each type. Check out the [Functions](#functions) for more information on the `types.check` function and the other helper functions provided by TypesJS
 
 &nbsp;
 
-&nbsp;
-
-You can also use a custom type to check arguments passed to a function by using the `types.checkArgs` function. This give you an easier way to test the provided arguments.
-
+#### Checking arguments passed to a function
+You can also use a custom type to check arguments passed to a function by using the `types.checkArgs` function. This gives you an easier way to test the provided arguments. Check out the [Functions](#functions) for more information on the `types.checkArgs` function and the other helper functions provided by TypesJS.
 ```javascript
   
   var TMyArgs = {
