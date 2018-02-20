@@ -70,6 +70,36 @@ types.check(msg1,TMessage,true);
 types.check(msg2,TMessage,true);
 
 ```
+Check out the [Types](#types) section for details on each type. Check out the [Functions](#functions) for more information on the `types.check` function and the other helper functions provided by TypesJS
+
+&nbsp;
+
+&nbsp;
+
+You can also use a custom type to check arguments passed to a function by using the `types.checkArgs` function. This give you an easier way to test the provided arguments.
+
+```javascript
+  
+  var TMyArgs = {
+    x: TNumber,
+    y: TNumber
+  };
+  
+  function Add(x,y) {
+    types.checkArgs(arguments,TMyArgs,true);
+    
+    return x + y;
+  }
+  
+  // passes the check
+  Add(4,4);
+  
+  // fails the check
+  Add(4, "4");
+
+```
+
+
 ---
 &nbsp;
 
