@@ -5,11 +5,24 @@
 # TypesJS 
 
 TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them.
-
+- [Install](#install)
+- [Quick Guide](#quick-guide)
 - [Types](#types)
 - [TypesJS Functions](#typesjs-functions)
 
-### Install
+---
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+# Install
+Quick Nav: [Home](#typesjs)
+
 Just add a script tag to the head of your document. 
 ```html
 <!DOCTYPE html>
@@ -18,7 +31,18 @@ Just add a script tag to the head of your document.
   </head>
   ...
 ```
-### Usage
+---
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+### Quick Guide
+Quick Nav: [Home](#typesjs)
 
 There are simple Base Types that can be used by themselves or combined to make more complex types.
 
