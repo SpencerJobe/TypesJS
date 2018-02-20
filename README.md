@@ -556,7 +556,7 @@ TGuard is a special advanced-annotation that wraps around a base or custom type.
   var TPoint = {
     x: TGuard(TNumber, function (x) {
       return x >= 0;
-    },
+    }),
     y: TNumber,
   };
 
