@@ -4,13 +4,24 @@
 ---
 # TypesJS 
 
-TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them. TypesJS is a combination of type annotations and helper functions. Click on each topic below for more info.
+TypesJS is a runtime type checking system for JavaScript. You put the types where you want them, when you what them. The module adds type annotations and helper functions. It's easy to install and you can quickly get started.  
 
+- [Install](#install)
+- [Quick Start](#quick-start)
 - [Types](#types)
 - [Functions](#typesjs-functions)
 
-### Install
+---
+
+&nbsp;
+
+&nbsp;
+
+# Install
+Nav:// [Home](#typesjs) / Install
+
 Just add a script tag to the head of your document. 
+
 ```html
 <!DOCTYPE html>
   <head>
@@ -18,8 +29,18 @@ Just add a script tag to the head of your document.
   </head>
   ...
 ```
-### Quick Guide
+
+---
+
+&nbsp;
+
+&nbsp;
+
+# Quick Start
+Nav:// [Home](#typesjs) / Quick Start
+
 There are simple Base Types that can be used by themselves or combined to make more complex types.
+
 ```javascript
 
 var test = "Hello world";
@@ -58,7 +79,7 @@ types.check(msg2,TMessage,true);
 
 <!-- ********************************************************************************************************* -->
 # Types
-Quick Nav: [Home](#typesjs) 
+Nav:// [Home](#typesjs) / Types
 
 TypesJS add several functions to the global namespace. These function _act_ as type annotations for the type system provided by TypesJS. These annotations include all of the base types in JavaScript and a few additional advanced types. You can read more about them below. 
 
@@ -70,7 +91,7 @@ TypesJS add several functions to the global namespace. These function _act_ as t
 &nbsp;
 
 ## Base Types
-Quick Nav: [Home](#typesjs) / [Types](#types) 
+Nav:// [Home](#typesjs) / [Types](#types) / Base Types
 
 There are 10 base-type annotation functions. They represent the base types in JavaScript. They are used with the `types.check` function to check the type of a given value. See the [Custom Types](#customtypes) section for details on creating your own types. Click on the type in the table below to view examples. 
 
@@ -89,7 +110,7 @@ There are 10 base-type annotation functions. They represent the base types in Ja
 
 #
 ### `TAny`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TAny
 
 The `TAny` type represents any JavaScript value including **null** and **undefined**. 
 
@@ -113,7 +134,7 @@ The `TAny` type represents any JavaScript value including **null** and **undefin
 
 #
 ### `TNull`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNull
 
 TNull examples are coming soon
 
@@ -123,7 +144,7 @@ TNull examples are coming soon
 
 #
 ### `TNotNull`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNotNull
 
 TNotNull examples are coming soon
 
@@ -134,7 +155,7 @@ TNotNull examples are coming soon
 
 #
 ### `TBoolean`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TBoolean
 
 TBoolean examples are coming soon
 
@@ -144,7 +165,7 @@ TBoolean examples are coming soon
 
 #
 ### `TNumber`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TNumber
 
 TNumber examples are coming soon
 
@@ -154,7 +175,7 @@ TNumber examples are coming soon
 
 #
 ### `TString`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TString
 
 TString Examples coming soon
 
@@ -164,7 +185,7 @@ TString Examples coming soon
 
 #
 ### `TArray`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TArray
 
 TArray Examples coming soon
 
@@ -174,7 +195,7 @@ TArray Examples coming soon
 
 #
 ### `TObject`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TObject
 
 TObject Examples coming soon
 
@@ -184,7 +205,7 @@ TObject Examples coming soon
 
 #
 ### `TFunction`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TFunction
 
 TFunction Examples are coming soon.
 
@@ -194,7 +215,7 @@ TFunction Examples are coming soon.
 
 #
 ### `TSymbol`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Base Types](#base-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Base Types](#base-types) / TSymbol
 
 TSymbol examples coming soon
 
@@ -207,7 +228,7 @@ TSymbol examples coming soon
 &nbsp;
 
 ## Advanced Types
-Quick Nav: [Home](#typesjs) / [Types](#types)
+Nav:// [Home](#typesjs) / [Types](#types) / Advanced Types 
 
 There are four advanced annotation functions in TypesJS. These functions allow you to create more advanced types. These advanced options can be used with the base types provided by TypesJS as well as custom types you defined. Examples of these advanced annotation function are provided below. See Custom Types section for details on creating your own types. 
 
@@ -220,7 +241,7 @@ There are four advanced annotation functions in TypesJS. These functions allow y
 
 #
 ### `TUnion(T1,T2,...)`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types) / TUnion
 
 The TUnion type allows you to create a union of more than one type. This is helpful when a valid value could be more than one type. A common example is when a value could be either a string or a number. 
 ```javascript
@@ -265,7 +286,7 @@ types.check(b,TStrumber, true);
 
 #
 ### `TObjectProperty(T)`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types) / TObjectProperty
 
 TObjectProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object literal and is NOT present on the prototype. 
 ```javascript
@@ -298,7 +319,7 @@ TObjectProperty is a special advanced-annotation that wraps around a base or cus
 
 #
 ### `TPrototypeProperty(T)`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types) / TPrototypeProperty
 
 TPrototypeProperty is a special advanced-annotation that wraps around a base or custom type. It checks the make sure the property is located on the object's prototype and is NOT present on the object itself. 
 ```javascript
@@ -341,7 +362,7 @@ TPrototypeProperty is a special advanced-annotation that wraps around a base or 
 
 #
 ### `TGuard(T,fn)`
-Quick Nav: [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types)
+Nav:// [Home](#typesjs) / [Types](#types) / [Advanced Types](#advanced-types) / TGuard
 
 TGuard is a special advanced-annotation that wraps around a base or custom type. It allows you to assign an assertion function to your type annotation. When a value is tested with a guard, it is first tested against the provide type `T`. If it _is_ of type `T` then the value is passed to the guard function `fn`. If _this_ function returns **true**, the value is considered to be a valid, guarded, type `T`. If the function returns **false**, then the value is considered invalid. 
 
@@ -373,8 +394,8 @@ TGuard is a special advanced-annotation that wraps around a base or custom type.
 &nbsp;
 
 <!-- ********************************************************************************************************* -->
-# TypesJS Functions
-Quick Nav: [Home](#typesjs) 
+# Functions
+Nav:// [Home](#typesjs) / Functions /
 
 TypesJS provides helper functions to check JavaScript's base types. There are also two functions designed to help with checking custom types and applying assertions at runtime.
 
@@ -400,7 +421,7 @@ TypesJS provides helper functions to check JavaScript's base types. There are al
 <!-- ===================================================================== -->
 #
 ### `types.check( <value>, <type>, [hardFail] )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.check
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -429,7 +450,7 @@ types.check(test,TNumber,true); //Fails, test is not a number
 <!-- ===================================================================== -->
 #
 ### `types.checkArgs( <arguments>, <type>, [hardFail] )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.checkArgs
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -471,7 +492,7 @@ Furthermore, the `<type>` parameter should be defined as an object literal who's
 <!-- ===================================================================== -->
 #
 ### `types.isNull( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isNull
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -506,7 +527,7 @@ Returns **true** if `<value>` is null or undefined. Otherwise it returns **false
 <!-- ===================================================================== -->
 #
 ### `types.isNotNull( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isNotNull
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -541,7 +562,7 @@ Returns **true** if `<value>` is **NOT** null or undefined. Otherwise it returns
 <!-- ===================================================================== -->
 #
 ### `types.isAny( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isAny
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -576,7 +597,7 @@ Always returns true. [More Info](https://en.wikipedia.org/wiki/Philosophy)
 <!-- ===================================================================== -->
 #
 ### `types.isBoolean( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isBoolean
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -615,7 +636,7 @@ Returns **true** if `<value>` is JavaScript Boolean.
 <!-- ===================================================================== -->
 #
 ### `types.isNumber( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isNumber
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -654,7 +675,7 @@ Returns **true** if `<value>` is a JavaScript Number
 <!-- ===================================================================== -->
 #
 ### `types.isString( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isString
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -692,7 +713,7 @@ Returns **true** if `<value>` is a JavaScript String
 <!-- ===================================================================== -->
 #
 ### `types.isObject( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isObject
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -737,7 +758,7 @@ Returns **true** if `<value>` is a JavaScript Object
 <!-- ===================================================================== -->
 #
 ### `types.isArray( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isArray
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -761,7 +782,7 @@ Returns **true** if `<value>` is a JavaScript Array
 <!-- ===================================================================== -->
 #
 ### `types.isFunction( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isFunction
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -784,7 +805,7 @@ Returns **true** if `<value>` is a  JavaScript Function
 <!-- ===================================================================== -->
 #
 ### `types.isSymbol( <value> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isSymbol
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -819,7 +840,7 @@ Returns **true** if `<value>` is a  JavaScript Symbol
 <!-- ===================================================================== -->
 #
 ### `types.isObjectProperty( <object>, <propertyName>)`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isObjectProperty
 
 | Parameter | Type |  Description |
 |---|---|---|
@@ -844,7 +865,7 @@ Returns **true** if `<propertyName>` is a property on the object literal `<objec
 <!-- ===================================================================== -->
 #
 ### `types.isPrototypeProperty( <object>, <propertyName> )`
-Quick Nav: [Home](#typesjs) / [TypesJS Functions](#typesjs-functions) 
+Nav:// [Home](#typesjs) / [Functions](#functions) / types.isPrototypeProperty
 
 | Parameter | Type |  Description |
 |---|---|---|
